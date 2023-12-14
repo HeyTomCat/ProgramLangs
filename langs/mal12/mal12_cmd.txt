@@ -1,0 +1,8 @@
+0 - sub #mem1 #mem2    - 3b cmd, 12b mem1, 1b coruption check, 12b mem2, 4b coruption check - 4B
+1 - add #mem1 #mem2    - 3b cmd, 12b mem1, 1b coruption check, 12b mem2, 4b coruption check - 4B
+2 - out #mem1          - 3b cmd, 12b mem1, 1b coruption check                               - 2B
+3 - set #mem1 $val1    - 3b cmd, 12b mem1, 1b coruption check, 12b val1, 4b coruption check - 4B
+4 - arg -arg1 #mem1    - 3b cmd, 12b arg1, 1b coruption check, 12b mem1, 4b coruption check - 4B
+5 - in #mem1           - 3b cmd, 12b mem1, 1b coruption check                               - 2B
+6 - sfg #mem1 #mem2    - 3b cmd, 12b mem1, 1b coruption check, 12b mem2, 4b coruption check - 4B
+7 - cjmp *ln1          - 3b cmd, 12b ln1, 1b coruption check                                - 2B
