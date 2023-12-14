@@ -1,0 +1,5 @@
+set #1 $48
+in #2
+sfg #2 #1
+out #2
+cjmp #-4
