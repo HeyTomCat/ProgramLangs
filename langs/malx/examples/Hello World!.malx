@@ -1,0 +1,13 @@
+sadr #0 !72
+sadr #1 !101
+sadr #2 !108
+sadr #3 !108
+sadr #4 !111
+sadr #5 !32
+sadr #6 !87
+sadr #7 !111
+sadr #8 !114
+sadr #9 !108
+sadr #10 !100
+sadr #11 !33
+out #0 #11
