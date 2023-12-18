@@ -6,8 +6,7 @@ Anyone is free to copy, modify, publish, use, compile, or
 distribute this software, either in source code form or as a compiled
 binary by any means.  
 
-You may not profit from these contents, if in the way you profit from  
-them this repository isn't mentioned.
+YOU MAY ONLY PROFIT FROM THESE CONTENTS, IF YOU MENTION THIS REPOSITORY.  
 
 In jurisdictions that recognize copyright laws, the author or authors
 of this software dedicate any and all copyright interest in the
