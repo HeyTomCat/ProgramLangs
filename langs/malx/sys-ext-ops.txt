@@ -1,2 +1,3 @@
 0-halt(status_code)
 1-wait(milli_seconds)
+2-changeThread(threadNumber)
