@@ -1,22 +1,14 @@
-sadr #2 !69
-sadr #3 !113
-sadr #4 !117
-sadr #5 !97
-sadr #6 !108
-sadr #7 !33
-sadr #8 !78
-sadr #9 !111
-sadr #10 !116
-sadr #11 !32
-sadr #12 !0
-sadr #13 !1
 in #0 #0
 in #1 #1
+sadr #2 !0
+sadr #3 !1
+sadr #4 !33
+sadr #5 !61
 sfig #0 #1
-jif $20
+jif $12
 sfig #1 #0
-jif $20
-sfig #13 #12
-jif $21
-out #8 #11
-out #2 #7
+jif $12
+sfig #3 #2
+jif $13
+out #4 #4
+out #5 #5
