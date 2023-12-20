@@ -1,14 +1,14 @@
-in #0 #0
-in #1 #1
-sadr #2 !0
-sadr #3 !1
-sadr #4 !33
-sadr #5 !61
-sfig #0 #1
-jif $12
-sfig #1 #0
-jif $12
-sfig #3 #2
-jif $13
-out #4 #4
-out #5 #5
+in #0 #0;
+in #1 #1;
+sadr #2 !0;
+sadr #3 !1;
+sadr #4 !33;
+sadr #5 !61;
+sfig #0 #1;
+jif $12;
+sfig #1 #0;
+jif $12;
+sfig #3 #2;
+jif $13;
+out #4 #4;
+out #5 #5;
