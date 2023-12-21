@@ -1,7 +1,7 @@
 With always 5b redundance per cmd:
 0-add #adr1 #adr2 #adrr	(3b cmd, 16b adr1, 16b adr2, 16b adrr	7B) #*adrr = *adr1 + *adr2
 1-sub #adr1 #adr2 #adrr	(3b cmd, 16b adr1, 16b adr2, 16b adrr	7B) #*adrr = *adr1 - *adr2
-2-out #adrf #adrt	(3b cmd, 16b adrf, 16b adrt		5B) #output from #adrf to #adrt in UTF-16
+2-out #adrf #adrt	(3b cmd, 16b adrf, 16b adrt		5B) #output from #adrf to #adrt in UTF-32
 3-in #adrf #adrt	(3b cmd, 16b adrf, 16b adrt		5B) #input to #adrf to #adrt in ascii (more input ignored)
 4-ext /op #arg		(3b cmd, 16b op, 32b arg			7B) # execute program-external function with arg (external functions to 255 system-reserved (see sys-ext-ops.txt))
 5-jif $line		(3b cmd, 16b line			3B) #jump to $line if flag is set
