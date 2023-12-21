@@ -10,6 +10,13 @@ After programming through some sort of text editor the file can be renamed to an
 As MALX will first be transpiled to "compiled minimalistic assembly language extended", or short CMALX,  
 before being executed (see SPECIALTIES), that intermediate language (CMALX) will need bit management  
 for how commands are saved.  
-|Number|Command|
-|-|-|
-|2|3|
+|Number|Command|Byte usage|Function|
+|-|-|-|-|
+|0|add #adr1 #adr2 #adr3|3bit cmd, 5bit redundance,|5|
+|1|sub #adr1 #adr2 #adr3|3bit cmd, 5bit redundance,|5|
+|2|out #adr_from #adr_to|3bit cmd, 5bit redundance,|5|
+|3|in #adr_from #adr_to|3bit cmd, 5bit redundance,|5|
+|4|ext /op #arg|3bit cmd, 5bit redundance,|5|
+|5|jif $line|3bit cmd, 5bit redundance,|5|
+|6|sfig #adr1 #adr2|3bit cmd, 5bit redundance,|5|
+|7|sadr #adr !val|3bit cmd, 5bit redundance,|5|
