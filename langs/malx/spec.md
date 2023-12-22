@@ -6,10 +6,10 @@ specification of external commands, specifications of code formatting, specialti
 ## File specifications/conventions  
 It should bes saved as an .malx file. This can be made by creating (conventionally) an ASCII .txt file.  
 After programming through some sort of text editor the file can be renamed to an .malx file.  
-## Specifications for commands and byte management  
-As MALX will first be transpiled to "compiled minimalistic assembly language extended", or short CMALX,  
-before being executed (see SPECIALTIES), that intermediate language (CMALX) will need bit management  
-for how commands are saved.  
+The transpiled
+## Specifications for commands and bit management  
+As MALX will mostly be transpiled to an intermediate byte code ("minimalistic assembly compilation", or short MAC),
+it will need specifications for the usage of all the single bits.
 |Number|Command|Byte usage|Function|
 |-|-|-|-|
 |0|add #adr1 #adr2 #adr3|3bit cmd, 5bit redundance,|5|
