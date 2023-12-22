@@ -23,4 +23,9 @@ integer, $ means its a reference to an operation in the script and / means its t
 |5|jif $line|3b cmd, 5b red, 16b $line|Jumps to $line if global flag is set.|
 |6|sfig #adr1 #adr2|3b cmd, 5b red, 16b #adr1, 16b #adr2|Sets global flag if value in #adr1 is greater than value in #adr2. Else resets flag.|
 |7|sadr #adr !val|3b cmd, 5b red, 16b #adr, 32b !val|Sets value of #adr to !val.|  
-## Specification of external commands
+## Specification of external commands  
+|Number|Command|Function|
+|-|-|-|
+|0|halt|Ends program with argument as exit status code.|
+|1|wait|Waits for an amount of milliseconds. Amount given by argument|
+No further system-/language-reserved external commands existent.
