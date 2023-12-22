@@ -11,15 +11,15 @@ The transpiled byte code (see SPECIALTIES) is saved in an .alc ("assembly langua
 ## Specifications for commands and bit management  
 As MALX will mostly be transpiled (see SPECIALTIES) to an intermediate byte code ("assembly language compilation",  
 or short ALC), it will need specifications for the usage of all the single bits. This specification is seen in this table,  
-where b is short for bit, B for byte and red for redundance and # means its a memory adress, ! means its an unsigned integer,  
-$ means its a reference to an operation in the script and / means its the number for an external operation:
+where b is short for bit, B for byte, cmd for the command and red for redundance and # means its a memory adress, ! means its an unsigned  
+integer, $ means its a reference to an operation in the script and / means its the number for an external operation:
 |Number|Command|Bit usage|Function|
 |-|-|-|-|
-|0|add #adr1 #adr2 #adr3|3b cmd, 5b red, 16b adr1, 16b adr2, 16b adr3|5|
-|1|sub #adr1 #adr2 #adr3|3b cmd, 5b red, 16b adr1, 16b adr2, 16b adr3|5|
-|2|out #adr_from #adr_to|3b cmd, 5b red, 16b adr_from, 16b adr_to|5|
-|3|in #adr_from #adr_to|3b cmd, 5b red, 16b adr_from, 16b adr_to|5|
-|4|ext /op #arg|3b cmd, 5b red, 16b op, 16b arg|5|
-|5|jif $line|3b cmd, 5b red, 16b line|5|
-|6|sfig #adr1 #adr2|3b cmd, 5b red, 16b adr1, 16b adr2|5|
-|7|sadr #adr !val|3b cmd, 5b red, 16b adr, 32b val|5|  
+|0|add #adr1 #adr2 #adr3|3b cmd, 5b red, 16b #adr1, 16b #adr2, 16b #adr3|Adds values in #adr1 and #adr2. Result is put into #adr3.|
+|1|sub #adr1 #adr2 #adr3|3b cmd, 5b red, 16b #adr1, 16b #adr2, 16b #adr3|Subtracts values in #adr1 and #adr2. Result is put into #adr3.|
+|2|out #adr_from #adr_to|3b cmd, 5b red, 16b #adr_from, 16b #adr_to|Outputs all the values from #adr_from to #adr_to as UTF-32 characters.|
+|3|in #adr_from #adr_to|3b cmd, 5b red, 16b #adr_from, 16b #adr_to|Takes UTF-32 input, puts into adresses from #adr_from to #adr_to. Further input will be ignored.|
+|4|ext /op #arg|3b cmd, 5b red, 16b /op, 16b #arg|Executes external /op with value in #arg as argument (see MANAGEMENT OF EXTERNAL COMMANDS). Operations from 0-255 are system-/language-reserved (see SPECIFICATION OF EXTERNAL COMMANDS).|
+|5|jif $line|3b cmd, 5b red, 16b $line|Jumps to $line if global flag is set.|
+|6|sfig #adr1 #adr2|3b cmd, 5b red, 16b #adr1, 16b #adr2|Sets global flag if value in #adr1 is greater than value in #adr2. Else resets flag.|
+|7|sadr #adr !val|3b cmd, 5b red, 16b #adr, 32b !val|Sets value of #adr to !val.|  
