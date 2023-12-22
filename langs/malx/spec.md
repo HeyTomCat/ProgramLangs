@@ -27,7 +27,7 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 |Number|Command|Function|
 |-|-|-|
 |0|halt|Ends program with argument as exit status code.|
-|1|wait|Waits for an amount of milliseconds. Amount given by argument|  
+|1|wait|Waits for an amount of milliseconds. Amount is given by argument|  
 
 No further system-/language-reserved external commands existent yet.
 ## Specifications of code formatting
