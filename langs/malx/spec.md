@@ -2,7 +2,7 @@
 # Specification for MALX
 This specification for the "minimalistic assembly language extended" includes:  
 specifications/conventions for files, specification of commands and bit management,  
-specification of external commands, specifications of code formatting, error detction/  
+specification of external commands, specifications of code formatting, corruption detection/  
 correction, management of external commands and specialties.  
 ## File specifications/conventions  
 It should bes saved as an .malx file. This can be made by creating (conventionally) an ASCII .txt file.  
@@ -35,3 +35,12 @@ In any line, if theres a \, behind that \ is a comment which should be ignored b
 Singular commands are always seperated by a ; and a new line, which helps com-/transpilers or interpreters.  
 The requirement of these ideas should be enforced by your com-/transpilers or interpreters to help with the sharing  
 of a common MALX syntax.  
+## Corruption detection/correction  
+In the transpiled .alc format (see SPECIALTIES) there are 5 redundant bits per command. These can be used for error  
+detection and/or minor error correction. The transpiled command size can be 3, 5 or 7 bytes depending on the command.  
+The 5 bits will be copys of 5bits through out the command transpilation, ignoring the redundant bits themselves, so  
+either 19 (2B, 3b), 51 (4B, 3b) or 83 bits (6B, 3b). In the following table Command Transpilation Size (CTS) and  
+Bits to Copy to Redundancy starting at 1(BCR) are listed:
+|CTS|BCR|
+|-|-|
+|3B||
