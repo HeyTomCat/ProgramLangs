@@ -17,7 +17,7 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 |-|-|-|-|-|
 |0|add #adr1 #adr2 #adr3|3b cmd, 5b red, 16b #adr1, 16b #adr2, 16b #adr3|7B|Adds values in #adr1 and #adr2. Result is put into #adr3.|
 |1|sub #adr1 #adr2 #adr3|3b cmd, 5b red, 16b #adr1, 16b #adr2, 16b #adr3|7B|Subtracts values in #adr1 and #adr2. Result is put into #adr3.|
-|2|out #adr_from #adr_to|3b cmd, 5b red, 16b #adr_from, 16b #adr_to|5B|Outputs all the values from #adr_from to #adr_to as UTF-32 characters.|
+|2|out #adr_from #adr_to|3b cmd, 5b red, 16b #adr_from, 16b #adr_to|5B|Outputs all the values from #adr_from to #adr_to as UTF-32 characters without new lines.|
 |3|in #adr_from #adr_to|3b cmd, 5b red, 16b #adr_from, 16b #adr_to|5B|Takes UTF-32 input, puts into adresses from #adr_from to #adr_to. Further input will be ignored.|
 |4|ext /op #arg|3b cmd, 5b red, 16b /op, 16b #arg|5B|Executes external /op with value in #arg as argument (see MANAGEMENT OF EXTERNAL COMMANDS). Operations from 0-255 are system-/language-reserved (see SPECIFICATION OF EXTERNAL COMMANDS).|
 |5|jif $line|3b cmd, 5b red, 16b $line|3B|Jumps to $line if global flag is set.|
