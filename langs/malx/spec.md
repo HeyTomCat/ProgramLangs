@@ -47,3 +47,8 @@ Redundancy Copy Indexes starting at 0, ignoring the redundant bits themselves (R
 |3B|0, 4, 8, 12, 16|
 |5B|0, 11, 22, 33, 44|
 |7B|0, 17, 34, 51, 68|  
+
+If a bit isn't equal to its redundant copy, replace the bit with the copy. If 3 or more copys don't correspond to the bit,  
+its more likely, that because the reundants are stored in batches, they are corrupted so instead change the redundant copy  
+to the corresponding bit. Even with this simple corruption correction a warning should still be outputed if any bit isn't  
+equal to its redundant copy.  
