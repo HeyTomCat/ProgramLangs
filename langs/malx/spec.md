@@ -41,7 +41,7 @@ In the transpiled .alc format (see SPECIALTIES) there are 5 redundant bits per c
 detection and/or minor error correction. The transpiled command size can be 3, 5 or 7 bytes depending on the command.  
 The 5 bits will be copys of 5bits through out the command transpilation, ignoring the redundant bits themselves, so  
 either 19 (2B, 3b), 51 (4B, 3b) or 83 bits (6B, 3b). In the following table Command Transpilation Size (CTS) and the  
-Redundancy Copy Indexes starting at 0, ignoring the redundant bits (RCIs) are listed:  
+Redundancy Copy Indexes starting at 0, ignoring the redundant bits themselves (RCIs) are listed:  
 |CTS|RCIs|
 |-|-|
 |3B|0, 4, 8, 12, 16|
