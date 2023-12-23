@@ -44,5 +44,5 @@ Redundancy Copy Indexes starting at 0, ignoring the redundant bits (RCIs) are li
 |CTS|RCIs|
 |-|-|
 |3B|0, 4, 8, 12, 16|
-|5B|0, 12, 24, 36, 48|
-|7B|0, 20, 40, 60, 80|
+|5B|0, 11, 22, 33, 44|
+|7B|0, 17, 34, 51, 68|  
