@@ -1,4 +1,3 @@
-# !!!SPECIFICATION NOT YET COMPLETE!!!
 # Specification for MALX
 This specification for the "minimalistic assembly language extended" includes:  
 specifications/conventions for files, specification of commands and bit management,  
@@ -7,7 +6,7 @@ correction, management of external commands and specialties.
 ## File specifications/conventions  
 It should bes saved as an .malx file. This can be made by creating (conventionally) an ASCII .txt file.  
 After programming through some sort of text editor the file can be renamed to an .malx file.  
-The transpiled byte code (see SPECIALTIES) is saved in an .alc ("assembly language compilation") file.
+The transpiled byte code (see SPECIALTIES) is saved in an .ALC ("assembly language compilation") file.
 ## Specifications for commands and bit management  
 As MALX will mostly be transpiled (see SPECIALTIES) to an intermediate byte code ("assembly language compilation",  
 or short ALC), it will need specifications for the usage of all the single bits. This specification is seen in this table,  
@@ -54,11 +53,14 @@ to the corresponding bit. Even with this simple corruption correction a warning 
 equal to its redundant copy.  
 ## Management of external commands
 All external commands from 0 to 255 are system reserved, but from 256 to 65535 are user defined (see SPECIFICATIONS FOR COMMANDS  
-AND BIT MANAGEMENT). These user defined external commands will be defined and saved in a COMMANDS.EXT file. In this file every  
+AND BIT MANAGEMENT). These user defined external commands will be defined and saved in a COMMANDS.EXT (external) file. In this file every  
 external command is saved as a line, structured like this:  
 [Number of command]-[Path to executable];  
 Lines may only be structured like this. No comments, empty lines or "compression" of multiple commands into one line should be  
-allowed. The file the path is pointing to may be a .malx file, a .alc file or any system executable. In the case of a .malx or .alc  
+allowed. The file the path is pointing to may be a .MALX file, a .ALC file or any system executable. In the case of a .MALX or .ALC  
 the argument will be written into memory address #0. In case of a system executable the argument will be given as a single UTF-32 character  
 in the arguments.
 ## Specialties
+Before this language is executed it will (mostly) be compiled to an intermediate byte code as an .ALC ("assembly language compilation") file.  
+This byte code also has a small corruption detection/correction algorithm (see CORRUPTION DETECTION/CORRECTION). Most of the commands won't be  
+in the language itself, but will be loaded through external commands (see SPECIFICATION OF EXTERNAL COMMANDS, MANAGEMENT OF EXTERNAL COMMANDS).
