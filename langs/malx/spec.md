@@ -34,7 +34,8 @@ No further system-/language-reserved external commands existent yet.
 In any line, if theres a \, behind that \ is a comment which should be ignored by com-/transpilers or interpreter.
 Singular commands are always seperated by a ; and a new line, which helps com-/transpilers or interpreters.  
 The requirement of these ideas should be enforced by your com-/transpilers or interpreters to help with the upkeeping  
-of a common MALX syntax to not need multiple versions.  
+of a common MALX syntax to not need multiple versions. Your com-/transpiler or interpreter should also output a warning  
+if it is tried to set memory address #0. The reason for this can be read in MANAGEMENT OF EXTERNAL COMMANDS.  
 ## Corruption detection/correction  
 In the transpiled .alc format (see SPECIALTIES) there are 5 redundant bits per command. These can be used for error  
 detection and/or minor error correction. The transpiled command size can be 3, 5 or 7 bytes depending on the command.  
