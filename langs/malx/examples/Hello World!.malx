@@ -1,13 +1,13 @@
-sadr #1; \H
-sadr ; \e
-sadr ; \l
-sadr ; \l
-sadr ; \o
-sadr ; \SPACE
-sadr ; \W
-sadr ; \o
-sadr ; \r
-sadr ; \l
-sadr ; \d
-sadr ; \!
-out ; \Output
+sadr #1 !; \H
+sadr #2 !; \e
+sadr #3 !; \l
+sadr #4 !; \l
+sadr #5 !; \o
+sadr #6 !; \SPACE
+sadr #7 !; \W
+sadr #8 !; \o
+sadr #9 !; \r
+sadr #10 !; \l
+sadr #11 !; \d
+sadr #12 !; \!
+out #1 #12; \Output
