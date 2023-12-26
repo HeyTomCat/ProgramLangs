@@ -31,10 +31,11 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 No further system-/language-reserved external commands existent yet.
 ## Specifications of code formatting
 In any line, if theres a \, behind that \ is a comment which should be ignored by com-/transpilers or interpreter.
-Singular commands are always seperated by a ; and a new line, which helps com-/transpilers or interpreters.  
-The requirement of these ideas should be enforced by your com-/transpilers or interpreters to help with the upkeeping  
-of a common MALX syntax to not need multiple versions. Your com-/transpiler or interpreter should also output a warning  
-if it is tried to set memory address #0. The reason for this can be read in MANAGEMENT OF EXTERNAL COMMANDS.  
+Singular commands are always seperated by a ; and a optionaly a new line, which might helps com-/transpilers or interpreters.  
+Additionally all numbers should be typed in hexadecimal. The requirement of these ideas should be enforced by your  
+com-/transpilers or interpreters to help with the upkeeping of a common MALX syntax to not need multiple versions. Your  
+com-/transpiler or interpreter should also output a warning if it is tried to set memory address #0. The reason for this  
+can be read in MANAGEMENT OF EXTERNAL COMMANDS.  
 ## Corruption detection/correction  
 In the transpiled .alc format (see SPECIALTIES) there are 5 redundant bits per command. These can be used for error  
 detection and/or minor error correction. The transpiled command size can be 3, 5 or 7 bytes depending on the command.  
@@ -49,8 +50,8 @@ Redundancy Copy Indexes starting at 0, ignoring the redundant bits themselves (R
 
 If a bit isn't equal to its redundant copy, replace the bit with the copy. If 3 or more copys don't correspond to the bit,  
 its more likely, that because the reundants are stored in batches, they are corrupted so instead change the redundant copy  
-to the corresponding bit. Even with this simple corruption correction a warning should still be outputed if any bit isn't  
-equal to its redundant copy.  
+to the corresponding bit. Even with this simple corruption correction a warning of possible corruption should still be outputed  
+if any bit isn't equal to its redundant copy.  
 ## Management of external commands
 All external commands from 0 to 255 are system reserved, but from 256 to 65535 are user defined (see SPECIFICATIONS FOR COMMANDS  
 AND BIT MANAGEMENT). These user defined external commands will be defined and saved in a COMMANDS.EXT (external) file. In this file every  
