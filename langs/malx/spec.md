@@ -30,7 +30,7 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 
 No further system-/language-reserved external commands existent yet.
 ## Specifications of code formatting
-In any line, if theres a \, behind that \ is a comment which should be ignored by com-/transpilers or interpreter.
+Everything in a line after a ; should be considered a comment which should be ignored by com-/transpilers or interpreter.
 Singular commands are always seperated by a ; and a optionaly a new line, which might helps com-/transpilers or interpreters.  
 Additionally all numbers should be typed in hexadecimal. The requirement of these ideas should be enforced by your  
 com-/transpilers or interpreters to help with the upkeeping of a common MALX syntax to not need multiple versions. Your  
