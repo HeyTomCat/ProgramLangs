@@ -9,6 +9,7 @@ def interpret(code):
             keys.append(lines[i].split())
     for k in keys:
         print(k)
+        print("")
 
 if __name__=="__main__":
     if len(sys.argv)!=2:
