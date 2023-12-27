@@ -1,7 +1,11 @@
 import sys
 def interpret(code):
     lines=code.split("\n")
-    print(code)
+    for i, line in enumerate(lines):
+        lines[i]=line[:line.find(";")]
+    for l in lines:
+        print(l)
+
 if __name__=="__main__":
     if len(sys.argv)!=2:
         print("Invalid amount of arguments!")
