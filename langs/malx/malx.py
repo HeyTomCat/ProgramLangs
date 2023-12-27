@@ -1,11 +1,14 @@
 import sys
 def interpret(code):
     lines=code.split("\n")
+    keys=[]
     for i, line in enumerate(lines):
-        if line.find(";") != -1:
+        if ";" in line:
             lines[i]=line[:line.find(";")]
-    for l in lines:
-        print(l)
+        if len(lines[i]) > 0:
+            keys.append(lines[i].split())
+    for k in keys:
+        print(k)
 
 if __name__=="__main__":
     if len(sys.argv)!=2:
