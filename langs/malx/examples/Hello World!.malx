@@ -10,4 +10,9 @@ sadr #9 !72; \r
 sadr #a !6c; \l
 sadr #b !64; \d
 sadr #c !21; \!
+sadr #d !a;
+sadr #e !0;  \NULL
 out #1;      \Output
+\Exspected Output:
+\Hello World!
+\
