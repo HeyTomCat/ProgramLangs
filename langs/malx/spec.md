@@ -31,11 +31,10 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 No further system-/language-reserved external commands existent yet.
 ## Specifications of code formatting
 Everything in a line after a ; should be considered a comment which should be ignored by com-/transpilers or interpreter.
-Singular commands are always seperated by a ; and a optionaly a new line, which might helps com-/transpilers or interpreters.  
-Additionally all numbers should be typed in hexadecimal. The requirement of these ideas should be enforced by your  
-com-/transpilers or interpreters to help with the upkeeping of a common MALX syntax to not need multiple versions. Your  
-com-/transpiler or interpreter should also output a warning if it is tried to set memory address #0. The reason for this  
-can be read in MANAGEMENT OF EXTERNAL COMMANDS.  
+All commands are always seperated by a new line. Additionally all numbers should be typed in hexadecimal. The requirement  
+of these ideas should be enforced by your com-/transpilers or interpreters to help with the upkeeping of a common MALX  
+syntax to not need multiple versions. Your com-/transpiler or interpreter should also output a warning if it is tried to  
+set memory address #0. The reason for this can be read in MANAGEMENT OF EXTERNAL COMMANDS.  
 ## Corruption detection/correction  
 In the transpiled .alc format (see SPECIALTIES) there are 5 redundant bits per command. These can be used for error  
 detection and/or minor error correction. The transpiled command size can be 3, 5 or 7 bytes depending on the command.  
