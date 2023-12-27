@@ -20,7 +20,7 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 |3|in #adr_from #adr_to|3b cmd, 5b red, 16b #adr_from, 16b #adr_to|5B|Takes UTF-32 input, puts into adresses from #adr_from to #adr_to. Further input will be ignored.|
 |4|ext /op #arg|3b cmd, 5b red, 16b /op, 16b #arg|5B|Executes external /op with value in #arg as argument (see MANAGEMENT OF EXTERNAL COMMANDS). Operations from 0-255 are system-/language-reserved (see SPECIFICATION OF EXTERNAL COMMANDS).|
 |5|jif $line|3b cmd, 5b red, 16b $line|3B|Jumps to $line if global flag is set.|
-|6|sfig #adr1 #adr2|3b cmd, 5b red, 16b #adr1, 16b #adr2|5B|Sets global flag if value in #adr1 is greater than value in #adr2. Else resets flag.|
+|6|sfig #adr1 #adr2|3b cmd, 5b red, 16b #adr1, 16b #adr2|5B|Sets global flag if value in #adr1 is greater than or equal to the value in #adr2. Else resets flag.|
 |7|sadr #adr !val|3b cmd, 5b red, 16b #adr, 32b !val|7B|Sets value of #adr to !val.|  
 ## Specification of external commands  
 |Number|Command|Function|
