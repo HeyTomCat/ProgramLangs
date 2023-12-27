@@ -2,7 +2,8 @@ import sys
 def interpret(code):
     lines=code.split("\n")
     for i, line in enumerate(lines):
-        lines[i]=line[:line.find(";")]
+        if line.find(";") != -1:
+            lines[i]=line[:line.find(";")]
     for l in lines:
         print(l)
 
