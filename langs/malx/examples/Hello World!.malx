@@ -10,4 +10,4 @@ sadr #9 !72; \r
 sadr #a !6c; \l
 sadr #b !64; \d
 sadr #c !21; \!
-out #1 #c;   \Output
+out #1;      \Output
