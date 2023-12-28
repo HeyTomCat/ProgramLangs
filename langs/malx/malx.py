@@ -1,5 +1,6 @@
 import sys
-def interpret(code):
+
+def parse(code):
     lines=code.split("\n")
     keys=[]
     for i, line in enumerate(lines):
@@ -7,11 +8,15 @@ def interpret(code):
             lines[i]=line[:line.find(";")]
         if len(lines[i]) > 0:
             keys.append(lines[i].split())
-    for k in keys:
-        print(k)
+    return keys
+
+def interpret(keys):
+    return
+
+
 
 if __name__=="__main__":
     if len(sys.argv)!=2:
         print("Invalid amount of arguments!")
         sys.exit(1)
-    interpret(open(sys.argv[1], "r").read())
+    interpret(parse(open(sys.argv[1], "r").read()))
