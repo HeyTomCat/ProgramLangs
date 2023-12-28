@@ -4,11 +4,11 @@ specifications/conventions for files, specification of commands and bit manageme
 specification of external commands, specifications of code formatting, corruption detection/  
 correction, management of external commands and specialties.  
 ## File specifications/conventions  
-It should bes saved as an .malx file. This can be made by creating (conventionally) an ASCII .txt file.  
+Programs should be saved as an .malx file. This can be made by creating (conventionally) an ASCII .txt file.  
 After programming through some sort of text editor the file can be renamed to an .malx file.  
 The transpiled byte code (see SPECIALTIES) is saved in an .ALC ("assembly language compilation") file.
 ## Specifications for commands and bit management  
-As MALX will (in most cases) be transpiled (see SPECIALTIES) to an intermediate byte code ("assembly language compilation",  
+As MALX will (in most cases) be compiled (see SPECIALTIES) to an intermediate byte code ("assembly language compilation",  
 or short ALC), it will need specifications for the usage of all the single bits. This specification is seen in this table,  
 where b is short for bit, B for byte, cmd for the command and red for redundance and # means its a memory adress,  
 ! means its an unsigned integer, $ means its a reference to an operation in the script and / means its the number for an external operation:
@@ -30,18 +30,19 @@ where b is short for bit, B for byte, cmd for the command and red for redundance
 
 No further system-/language-reserved external commands existent yet.
 ## Specifications of code formatting
-Everything in a line after a ; should be considered a comment which should be ignored by com-/transpilers or interpreter.
+Everything in a line after a ; should be considered a comment which should be ignored by compilers or interpreter.
 All commands are always seperated by a new line. Additionally all numbers should be typed in hexadecimal. When building a  
-com-/transpiler or interpreter for MALX, it should give errors, if these syntax specifications aren't followed. Your  
-com-/transpiler or interpreter should also output a warning if it is tried to set memory address #0. The reason for this  
+compiler or interpreter for MALX, it should give errors, if these syntax specifications aren't followed. Your  
+compiler or interpreter should also output a warning if it is tried to set memory address #0. The reason for this  
 can be read in MANAGEMENT OF EXTERNAL COMMANDS.  
 ## Corruption detection/correction  
-In the transpiled .alc format (see SPECIALTIES) there are 5 redundant bits per command. These can be used for error  
-detection and/or minor error correction. The transpiled command size can be 3, 5 or 7 bytes depending on the command.  
-The 5 bits will be copys of 5bits through out the command transpilation, ignoring the redundant bits themselves, so  
-either 19 (2B, 3b), 51 (4B, 3b) or 83 bits (6B, 3b). In the following table Command Transpilation Size (CTS) and the  
-Redundancy Copy Indexes starting at 0, ignoring the redundant bits themselves (RCIs) are listed:  
-|CTS|RCIs|
+In the compiled .alc format (see SPECIALTIES) there are 5 redundant bits per command. These can be used for error  
+detection and/or minor error correction. The compiled command size can be 3, 5 or 7 bytes depending on the command  
+(see SPECIFICATIONS FOR COMMANDS AND BIT MANAGEMENT). The 5 bits will be copys of 5bits through out the command  
+compilation, ignoring the redundant bits themselves, so either 19 (2B, 3b), 51 (4B, 3b) or 83 bits (6B, 3b). In  
+the following table Command Compilation Size (CCS) and the Redundancy Copy Indexes starting at 0, ignoring the  
+redundant bits themselves (RCIs) are listed:  
+|CCS|RCIs|
 |-|-|
 |3B|0, 4, 8, 12, 16|
 |5B|0, 11, 22, 33, 44|
@@ -62,5 +63,5 @@ the argument will be written into memory address #0. In case of a system executa
 in the arguments.
 ## Specialties
 Before this language is executed it will (in most cases) be compiled to an intermediate byte code as an .ALC ("assembly language compilation") file.  
-This byte code also has a small corruption detection/correction algorithm (see CORRUPTION DETECTION/CORRECTION). Most of the commands won't be  
+This byte code also has a small corruption detection/correction algorithm (see CORRUPTION DETECTION/CORRECTION). Many commands won't be  
 in the language itself, but will be loaded through external commands (see SPECIFICATION OF EXTERNAL COMMANDS, MANAGEMENT OF EXTERNAL COMMANDS).
