@@ -11,6 +11,25 @@ def parse(code):
     return keys
 
 def interpret(keys):
+    for i in range(len(keys)):
+        match k[0]:
+            case "add":
+                pass
+            case "sub":
+                pass
+            case "out":
+                pass
+            case "in":
+                pass
+            case "ext":
+                pass
+            case "jif":
+                pass
+            case "sfig":
+                pass
+            case "sadr":
+                pass
+
     return
 
 
