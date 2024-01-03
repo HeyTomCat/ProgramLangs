@@ -1,7 +1,7 @@
 # !SPECIFICATION NOT YET COMPLETE!  
 # Specification for AMA  
 ## Contents of this specification  
--[Contents of this specification](#contents-of-this-specification)
+-[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
 -[Data Storage](#data-storage)  
    -[Registers](#registers)  
