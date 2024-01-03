@@ -4,4 +4,4 @@ This programming language is programmed in python, supports 8 commands(see mal12
 and operates on 12-bit-integers.  
   
 # STATUS: Incomplete  
-# FUTURE: Probably no further work
+# FUTURE: Discontinued due to flaw (12bit unsigned integers too small)
