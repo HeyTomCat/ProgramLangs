@@ -6,8 +6,6 @@ Anyone is free to copy, modify, publish, use, compile, or
 distribute this software, either in source code form or as a compiled
 binary by any means.  
 
-YOU MAY ONLY PROFIT FROM THESE CONTENTS, IF YOU MENTION THIS REPOSITORY.  
-
 In jurisdictions that recognize copyright laws, the author or authors
 of this software dedicate any and all copyright interest in the
 software to the public domain. We make this dedication for the benefit
@@ -28,4 +26,6 @@ For more information, please refer to <https://unlicense.org>
 
 In addition, even though not required it would be greatly appreciated to  
 use this exact license with only minor modifications in your repository,  
-if it is based on or uses contents of this repository.
+if it is based on or uses contents of this repository. Also it would be  
+greatly appreciated, if in any way you use these contents, there  
+is at least some mention of this repository.  
