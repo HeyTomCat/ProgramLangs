@@ -3,6 +3,8 @@
 ## Contents of this specification  
 -[General Information](#general-information)  
 -[Data Storage](#data-storage)  
+   -[Registers](#registers)  
+   -[Memory](#memory)  
 -[Instruction set specification](#instruction-set-specification)  
 -[Instruction encoding specification](#instruction-encoding-specification)  
 -[Corruption detection](#corruption-detection)  
