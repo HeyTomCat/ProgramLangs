@@ -27,9 +27,20 @@ This language uses a memory with 32 bit adresses. Each memory cell contains
 ### Flag  
 The flag is a boolean value, which can be set by the [FLAG OPERATIONS](#flag-operations).  
 ### Stack  
+The stack is a stack of 32 bit unsigned integers which can be changed by the  
+[STACK OPERATIONS](#stack-operations).  
 ## Instruction set specification  
 ### Stack operations  
+|Instruction with arguments|Function|
+|-|-|
+|push :r|Push value in register r onto stack.|
+|pop :r|Pop value of stack into register r.|
 ### Arithmetic  
+|Instruction with arguments|Function in pseudocode|
+|-|-|
+|add :r1 :r2 :r3|r3 = r1 + r2|
+|sub :r1 :r2 :r3|r3 = r1 - r2|
+|mult :r1 :r2 :r3|r3 = r1 * r2|
 ### Register instructions  
 ### Flag operations  
 ### Branching  
