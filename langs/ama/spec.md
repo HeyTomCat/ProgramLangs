@@ -42,6 +42,12 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 |sub :r1 :r2 :r3|r3 = r1 - r2|
 |mult :r1 :r2 :r3|r3 = r1 * r2|
 ### Register instructions  
+|Instruction with arguments|Function|
+|-|-|
+|lr :r :radr||
+|lm :radr :r||
+|mov :r1 :r2|In pseudocode: r1 = r2|
+|set :r !val|With val an 32 bit unsigned integer, in pseudocode: r = val|
 ### Flag operations  
 ### Branching  
 ### External
