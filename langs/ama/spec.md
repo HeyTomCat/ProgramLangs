@@ -18,8 +18,22 @@ or be interpreted directly as an .AMA file. The intermediate byte code will
 then be interpreted by a compilation interpreter.  
 ## Data Storage  
 ### Registers  
+This language uses 256 registers with register 0 being used as the program  
+counter and being uneditable (see [SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters).  
+Each of these registers contain 32 bits in the form of 32 bit unsigned integers.  
 ### Memory  
+This language uses a memory with 32 bit adresses. Each memory cell contains  
+8 bits.  
+### Flag  
+The flag is a boolean value, which can be set by the [FLAG OPERATIONS](#flag-operations).  
+### Stack  
 ## Instruction set specification  
+### Stack operations  
+### Arithmetic  
+### Register instructions  
+### Flag operations  
+### Branching  
+### External
 ## Instruction encoding specification  
 ## Corruption detection  
 ## Specifications for compilers and interpreters  
