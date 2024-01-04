@@ -130,3 +130,4 @@ Here the [FILE-EXTERNAL COMMANDS](#external) are specified:
 
 Any opcode larger should be ignored.  
 ## Temporary registers  
+This is an optional feature for AMA compilers and interpreters
