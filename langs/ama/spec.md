@@ -25,7 +25,7 @@ and 8 bit memory cells (see [DATA STORAGE](#data-storage)). This language will i
 compiled to an intermediate byte code in the form of an .EEA ("executable encoded  
 assembly") file (see [INSTRUCTION ENCODING SPECIFICATION](#instruction-encoding-specification), [CORRUPTION DETECTION](#corruption-detection))  
 or be interpreted directly as an .AMA file. The intermediate byte code will  
-then be interpreted by a compilation interpreter.  
+then be interpreted by a runtime environment.  
 ## Data Storage  
 ### Registers  
 This language uses 256 registers with register 0 being used as the program  
@@ -75,26 +75,26 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 ### External
 |Instruction with arguments|Function|
 |-|-|
-|ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions).|
+|ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions)).|
 ## Instruction encoding specification  
 |Opcode in hexadecimal|Instruction with arguments|Bit usage|Encoded Size|
 |-|-|-|-|
-|0|push :r|4b redundant, 4b opcode, 8b r||
-|1|pop :r|4b redundant, 4b opcode,  8b r||
-|2|add :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3||
-|3|sub :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3||
-|4|mult :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3||
-|5|lr :r :radr|4b redundant, 4b opcode, 8b r, 8b radr||
-|6|lm :radr :r|4b redundant, 4b opcode, 8b r, 8b radr||
-|7|mov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
-|8|set :r !val|4b redundant, 4b opcode, 8b r, 32b val||
-|9|nf|4b redundant, 4b opcode||
-|a|sfl :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
-|b|sfg :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
-|c|sfe :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
-|d|jmp :r|4b redundant, 4b opcode, 8b r||
-|e|jpc :r|4b redundant, 4b opcode, 8b r||
-|f|ext :rop :rarg|4b redundant, 4b opcode, 8b rop, 8b rarg||  
+|0|push :r|4b redundant, 4b opcode, 8b r|2B|
+|1|pop :r|4b redundant, 4b opcode,  8b r|2B|
+|2|add :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3|4B|
+|3|sub :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3|4B|
+|4|mult :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3|4B|
+|5|lr :r :radr|4b redundant, 4b opcode, 8b r, 8b radr|3B|
+|6|lm :radr :r|4b redundant, 4b opcode, 8b r, 8b radr|3B|
+|7|mov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|8|set :r !val|4b redundant, 4b opcode, 8b r, 32b val|6B|
+|9|nf|4b redundant, 4b opcode|1B|
+|a|sfl :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|b|sfg :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|c|sfe :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|d|jmp :r|4b redundant, 4b opcode, 8b r|2B|
+|e|jpc :r|4b redundant, 4b opcode, 8b r|2B|
+|f|ext :rop :rarg|4b redundant, 4b opcode, 8b rop, 8b rarg|3B|  
 
 For more information on instructions see [INSTRUCTION SET SPECIFICATION](#instruction-set-specification).  
 To understand how redundant bits are used see [CORRUPTION DETECTION](#corruption-detection).  
