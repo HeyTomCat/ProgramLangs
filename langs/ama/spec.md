@@ -75,8 +75,29 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 ### External
 |Instruction with arguments|Function|
 |-|-|
-|ext :rop :rarg||
+|ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions).|
 ## Instruction encoding specification  
+|Opcode in hexadecimal|Instruction with arguments|Bit usage|Encoded Size|
+|-|-|-|-|
+|0|push :r|4b redundant, 4b opcode, 8b r||
+|1|pop :r|4b redundant, 4b opcode,  8b r||
+|2|add :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3||
+|3|sub :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3||
+|4|mult :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3||
+|5|lr :r :radr|4b redundant, 4b opcode, 8b r, 8b radr||
+|6|lm :radr :r|4b redundant, 4b opcode, 8b r, 8b radr||
+|7|mov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
+|8|set :r !val|4b redundant, 4b opcode, 8b r, 32b val||
+|9|nf|4b redundant, 4b opcode||
+|a|sfl :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
+|b|sfg :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
+|c|sfe :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2||
+|d|jmp :r|4b redundant, 4b opcode, 8b r||
+|e|jpc :r|4b redundant, 4b opcode, 8b r||
+|f|ext :rop :rarg|4b redundant, 4b opcode, 8b rop, 8b rarg||  
+
+For more information on instructions see [INSTRUCTION SET SPECIFICATION](#instruction-set-specification).  
+To understand how redundant bits are used see [CORRUPTION DETECTION](#corruption-detection).  
 ## Corruption detection  
 ## Specifications for compilers and interpreters  
 ## Specification of file-external instructions
