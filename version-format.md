@@ -16,8 +16,8 @@ changelogs-v[main-version]. There its in the file
 changelog-v[main-version].[variation-version].md  
 For example the changelog for MALX v1.1 can be found in  
 langs/malx/changelogs-v1/changelog-v1.1.md.  
-But there are exeptions:
+But there are exeptions:  
 -First versions (variation version 0) come without a  
-   changelog.
--Incomplete versions (main version 0) come without a
-   changelog.
+   changelog.  
+-Incomplete versions (main version 0) come without a  
+   changelog.  
