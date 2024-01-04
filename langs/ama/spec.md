@@ -112,6 +112,11 @@ When building a compiler or an interpreter for AMA it should obey the following:
    also output an error and stop when register 253, 254 or 255 is being  
    edited (for reason see [TEMPORARY REGISTERS](#temporary-registers)).  
    This DOES NOT apply to runtime environments.  
-
+-When detecting a ; it should ignore the ; and the rest of the line, because  
+   a ; represents the start of a comment.
+-For compilers and runtime environments the specified [CORRUPTION DETECTION](#corruption-detection)  
+   should be implemented.  
+-Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
+   for runtime environments.  
 ## Specification of file-external instructions  
 ## Temporary registers  
