@@ -19,6 +19,7 @@
 -[Corruption detection](#corruption-detection)  
 -[Specifications for compilers and interpreters](#specifications-for-compilers-and-interpreters)  
 -[Specification of file-external instructions](#specification-of-file-external-instructions)
+-[Temporary registers](#temporary-registers)
 ## General Information  
 The "advanced minimalistic assembly", in short AMA, operates on 32 bit registers  
 and 8 bit memory cells (see [DATA STORAGE](#data-storage)). This language will in most cases be  
@@ -104,4 +105,6 @@ for corruption detection. Those bits are usually all set to 0 and if
 the runtime environment finds, that at least 1 of those bits isn't 0  
 it knows there was a corruption and should output an error.  
 ## Specifications for compilers and interpreters  
-## Specification of file-external instructions
+When building a compiler or an interpreter  
+## Specification of file-external instructions  
+## Temporary registers  
