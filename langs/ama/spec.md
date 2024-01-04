@@ -1,4 +1,4 @@
-# ⚠️!SPECIFICATION NOT YET COMPLETE!⚠️  
+# ⚠️SPECIFICATION NOT YET COMPLETE⚠️  
 # Specification for AMA  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
