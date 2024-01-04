@@ -99,5 +99,9 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 For more information on instructions see [INSTRUCTION SET SPECIFICATION](#instruction-set-specification).  
 To understand how redundant bits are used see [CORRUPTION DETECTION](#corruption-detection).  
 ## Corruption detection  
+When encoded, there are 4 redundant bits per instruction that are used  
+for corruption detection. Those bits are usually all set to 0 and if  
+the runtime environment finds, that at least 1 of those bits isn't 0  
+it knows there was a corruption and should output an error.  
 ## Specifications for compilers and interpreters  
 ## Specification of file-external instructions
