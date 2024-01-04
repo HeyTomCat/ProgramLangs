@@ -1,5 +1,4 @@
-# ⚠️SPECIFICATION NOT YET COMPLETE⚠️  
-# Specification for AMA v0.1  
+# Specification for AMA v1.0  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
@@ -118,6 +117,7 @@ When building a compiler or an interpreter for AMA it should obey the following:
    should be implemented.  
 -Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
    for runtime environments.  
+-Take all numbers as hexadecimal.
 ## Specification of file-external instructions  
 Here the [FILE-EXTERNAL COMMANDS](#external) are specified:  
 |Opcode|Instruction|Function|
@@ -130,4 +130,10 @@ Here the [FILE-EXTERNAL COMMANDS](#external) are specified:
 
 Any opcode larger should be ignored.  
 ## Temporary registers  
-This is an optional feature for AMA compilers and interpreters
+This is an optional feature for AMA compilers and interpreters which makes  
+coding easier and makes the code look cleaner. With this you can, instead of a  
+register as :r with r being the register number, write an integer as [n] with  
+n being the integer. It should be implemented by writing before the instruction  
+a set instruction, setting one of the "temporary registers" (usually register 253,  
+254 or 255) to the integer. This has the same effect as using that number  
+directly, just it doesn't need to change the instructions.  
