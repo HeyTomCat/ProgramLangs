@@ -1,4 +1,4 @@
-# Specification for AMA v1.0  
+# Specification for AMA v1.1  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
@@ -57,8 +57,8 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 ### Register instructions  
 |Instruction with arguments|Function|
 |-|-|
-|lr :r :radr|Load the register r with the value in the 4 memory cells beginning with the address given by the value in radr.|
-|lm :radr :r|Load the 4 memory cells beginning at the address given by the value in radr with the value in r.|
+|lr :r :radr|Load the register r with the value in the 4 memory cells ending with the address given by the value in radr.|
+|lm :radr :r|Load the 4 memory cells ending at the address given by the value in radr with the value in r.|
 |mov :r1 :r2|In pseudocode: r2 = r1|
 |set :r !val|With val an 32 bit unsigned integer, in pseudocode: r = val|
 ### Flag operations  
@@ -138,4 +138,4 @@ register as :r with r being the register number, write an integer as [n] with
 n being the integer. It should be implemented by writing before the instruction  
 a set instruction, setting one of the "temporary registers" (usually register 253,  
 254 or 255) to the integer. This has the same effect as using that number  
-directly, just it doesn't need to change the instructions.  
+directly, just the compiler or interpreter doesn't need to change the instructions.  
