@@ -1,5 +1,5 @@
 # ⚠️SPECIFICATION NOT YET COMPLETE⚠️  
-# Specification for AMA v0.0  
+# Specification for AMA v0.1  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
@@ -76,7 +76,7 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 ### External
 |Instruction with arguments|Function|
 |-|-|
-|ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions)).|
+|ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in memory with the address given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions)).|
 ## Instruction encoding specification  
 |Opcode in hexadecimal|Instruction with arguments|Bit usage|Encoded Size|
 |-|-|-|-|
@@ -119,4 +119,13 @@ When building a compiler or an interpreter for AMA it should obey the following:
 -Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
    for runtime environments.  
 ## Specification of file-external instructions  
+|Opcode|Instruction|Function|
+|-|-|-|
+|0|halt|Exits program with exit code given by the value in the argument register.|
+|1|noop|Does nothing.|
+|2|sleep|Waits an amount of milliseconds given by the value in the argument register.|
+|3|out|Outputs all registers from argument register to next 0-valued register as UTF-32.|
+|4|in|Takes UTF-32 input into registers from argument register to next 0-valued register. Further input ignored.|
+
+Any opcode larger should be ignored.  
 ## Temporary registers  
