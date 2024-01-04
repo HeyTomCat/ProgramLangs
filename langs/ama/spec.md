@@ -105,6 +105,13 @@ for corruption detection. Those bits are usually all set to 0 and if
 the runtime environment finds, that at least 1 of those bits isn't 0  
 it knows there was a corruption and should output an error.  
 ## Specifications for compilers and interpreters  
-When building a compiler or an interpreter  
+When building a compiler or an interpreter for AMA it should obey the following:  
+-Output an error and stop when register 0 is being edited (for reason see  
+   [REGISTERS](#registers)). This should also be the case for runtime environments.  
+-In case your compiler or interpreter uses [TEMPORARY REGISTERS](#temporary-registers) it should  
+   also output an error and stop when register 253, 254 or 255 is being  
+   edited (for reason see [TEMPORARY REGISTERS](#temporary-registers)).  
+   This DOES NOT apply to runtime environments.  
+
 ## Specification of file-external instructions  
 ## Temporary registers  
