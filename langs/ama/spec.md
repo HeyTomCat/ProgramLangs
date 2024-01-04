@@ -58,7 +58,7 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 |-|-|
 |lr :r :radr|Load the register r with the value in the 4 memory cells beginning with the address given by the value in radr.|
 |lm :radr :r|Load the 4 memory cells beginning at the address given by the value in radr with the value in r.|
-|mov :r1 :r2|In pseudocode: r1 = r2|
+|mov :r1 :r2|In pseudocode: r2 = r1|
 |set :r !val|With val an 32 bit unsigned integer, in pseudocode: r = val|
 ### Flag operations  
 |Instruction with arguments|Function in pseudocode|
