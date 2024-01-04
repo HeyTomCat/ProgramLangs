@@ -1,4 +1,4 @@
-# Specification for MALX Version 1.0
+# Specification for MALX Version 1.1
 This specification for the "minimalistic assembly language extended" includes:  
 specifications/conventions for files, specification of commands and bit management,  
 specification of external commands, specifications of code formatting, corruption detection/  
