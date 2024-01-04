@@ -11,4 +11,5 @@ mov :4 :b ;l
 set :c ;d
 set :d ;!
 set :e 0;NULL
-lm
+lm [0] [3];Load OUT instruction
+ext [0] :1;Output
