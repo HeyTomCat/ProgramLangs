@@ -119,6 +119,7 @@ When building a compiler or an interpreter for AMA it should obey the following:
 -Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
    for runtime environments.  
 ## Specification of file-external instructions  
+Here the [FILE-EXTERNAL COMMANDS](#external) are specified:  
 |Opcode|Instruction|Function|
 |-|-|-|
 |0|halt|Exits program with exit code given by the value in the argument register.|
