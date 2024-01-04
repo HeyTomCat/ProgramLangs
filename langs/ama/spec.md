@@ -34,7 +34,8 @@ Each of these registers contain 32 bits in the form of 32 bit unsigned integers.
 By standard are all values 0.  
 ### Memory  
 This language uses a memory with 32 bit addresses. Each memory cell contains  
-8 bits. By standard are all values 0.  
+8 bits. By standard are all values 0. When the address is higher than the  
+unsigned 32 bit integer limit it loops around to 0.  
 ### Flag  
 The flag is a boolean value, which can be set by the [FLAG OPERATIONS](#flag-operations).  
 By standard false.  
@@ -117,7 +118,8 @@ When building a compiler or an interpreter for AMA it should obey the following:
    should be implemented.  
 -Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
    for runtime environments.  
--Take all numbers as hexadecimal.
+-Take all numbers as hexadecimal.  
+-Implement the [DATA STORAGE](#data-storage) as specified.
 ## Specification of file-external instructions  
 Here the [FILE-EXTERNAL COMMANDS](#external) are specified:  
 |Opcode|Instruction|Function|
