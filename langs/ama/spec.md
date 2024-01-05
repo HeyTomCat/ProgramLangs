@@ -29,7 +29,8 @@ then be interpreted by a runtime environment.
 ## Data Storage  
 ### Registers  
 This language uses 256 registers with register 0 being used as the program  
-counter (see [SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters).  
+counter holding the index of the current instruction (see  
+[SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters)).  
 Each of these registers contain 32 bits in the form of 32 bit unsigned integers.  
 By standard are all values 0.  
 ### Memory  
