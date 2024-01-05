@@ -29,6 +29,9 @@ def getOpcode(instruction):
     error('Instruction not found: ' + instruction)
   return res
 
+def interpret(keywords):
+  pass
+
 if __name__ == '__main__':
   if len(sys.argv) != 2:
     error("Invalid number of arguments!")
