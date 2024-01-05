@@ -1,4 +1,4 @@
-# Specification for AMA v1.1  
+# Specification for AMA v1.2  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
@@ -10,7 +10,7 @@
 -[Instruction set specification](#instruction-set-specification)  
    -[Stack operations](#stack-operations)  
    -[Arithmetic](#arithmetic)  
-   -[Register instructions](#register-instructions)  
+   -[Data instructions](#data-instructions)  
    -[Flag operations](#flag-operations)  
    -[Branching](#branching)  
    -[External](#external)  
@@ -29,7 +29,7 @@ then be interpreted by a runtime environment.
 ## Data Storage  
 ### Registers  
 This language uses 256 registers with register 0 being used as the program  
-counter and being uneditable (see [SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters).  
+counter (see [SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters).  
 Each of these registers contain 32 bits in the form of 32 bit unsigned integers.  
 By standard are all values 0.  
 ### Memory  
@@ -54,13 +54,15 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 |add :r1 :r2 :r3|r3 = r1 + r2|
 |sub :r1 :r2 :r3|r3 = r1 - r2|
 |mult :r1 :r2 :r3|r3 = r1 * r2|
-### Register instructions  
+### Data instructions  
 |Instruction with arguments|Function|
 |-|-|
 |lr :r :radr|Load the register r with the value in the 4 memory cells ending with the address given by the value in radr.|
 |lm :radr :r|Load the 4 memory cells ending at the address given by the value in radr with the value in r.|
 |mov :r1 :r2|In pseudocode: r2 = r1|
 |set :r !val|With val an 32 bit unsigned integer, in pseudocode: r = val|
+|cmov :r1 :r2|If flag is set to true copy value in r1 into r2.|
+|setm :radr !val|Set the 4 memory cells ending at the address given by the value in radr to val.|
 ### Flag operations  
 |Instruction with arguments|Function in pseudocode|
 |-|-|
@@ -68,12 +70,7 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 |sfl :r1 :r2|flag = r1 < r2|
 |sfg :r1 :r2|flag = r1 > r2|
 |sfe :r1 :r2|flag = r1 == r2|
-### Branching  
-|Instruction with arguments|Function|
-|-|-|
-|jmp :r|Jump to instruction given by the value in r.|
-|jpc :r|Jump to instruction given by the value in r if flag is set to true.|
-### External
+### External  
 |Instruction with arguments|Function|
 |-|-|
 |ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in memory with the address given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions)).|
@@ -89,12 +86,12 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 |6|lm :radr :r|4b redundant, 4b opcode, 8b r, 8b radr|3B|
 |7|mov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
 |8|set :r !val|4b redundant, 4b opcode, 8b r, 32b val|6B|
-|9|nf|4b redundant, 4b opcode|1B|
-|a|sfl :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|b|sfg :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|c|sfe :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|d|jmp :r|4b redundant, 4b opcode, 8b r|2B|
-|e|jpc :r|4b redundant, 4b opcode, 8b r|2B|
+|9|cmov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|a|setm :radr !val|4b redundant, 4b opcode, 8b radr, 32b val|6B|
+|b|nf|4b redundant, 4b opcode|1B|
+|c|sfl :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|d|sfg :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
+|e|sfe :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
 |f|ext :rop :rarg|4b redundant, 4b opcode, 8b rop, 8b rarg|3B|  
 
 For more information on instructions see [INSTRUCTION SET SPECIFICATION](#instruction-set-specification).  
@@ -106,12 +103,9 @@ the runtime environment finds, that at least 1 of those bits isn't 0
 it knows there was a corruption and should output an error.  
 ## Specifications for compilers and interpreters  
 When building a compiler or an interpreter for AMA it should obey the following:  
--Output an error and stop when register 0 is being edited (for reason see  
-   [REGISTERS](#registers)). This should also be the case for runtime environments.  
 -In case your compiler or interpreter uses [TEMPORARY REGISTERS](#temporary-registers) it should  
    also output an error and stop when register 253, 254 or 255 is being  
    edited (for reason see [TEMPORARY REGISTERS](#temporary-registers)).  
-   This DOES NOT apply to runtime environments.  
 -When detecting a ; it should ignore the ; and the rest of the line, because  
    a ; represents the start of a comment.
 -For compilers and runtime environments the specified [CORRUPTION DETECTION](#corruption-detection)  
