@@ -1,7 +1,7 @@
 set :1 !0   ;UTF-32 char as int
 set :2 !0   ;Constant 0 needed for output termination and checking for end of loop
 set :3 !1   ;Needed for increment
-setm %0 !3 ;Load OUT instruction
+setm %0 $3 ;Load OUT instruction
 mov :0 :4   ;Set beginning of loop
 ext %0 :1  ;Output
 add :1 :3 :1;Increment

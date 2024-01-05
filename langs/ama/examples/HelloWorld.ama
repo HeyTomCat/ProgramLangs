@@ -11,6 +11,6 @@ mov :3 :a  ;l
 set :b !64 ;d
 set :c !21 ;!
 set :d !0  ;NULL
-setm %0 !3;Load OUT instruction
+setm %0 $3;Load OUT instruction
 ext %0 :1;Output
 ;Exspected Output: Hello World!

@@ -63,7 +63,7 @@ The stack is a stack of 32 bit unsigned integers which can be changed by the
 |mov :r1 :r2|In pseudocode: r2 = r1|
 |set :r !val|With val an 32 bit unsigned integer, in pseudocode: r = val|
 |cmov :r1 :r2|If flag is set to true copy value in r1 into r2.|
-|setm :radr !val|Set the 4 memory cells ending at the address given by the value in radr to val.|
+|setm :radr $val|Set the 4 memory cells ending at the address given by the 8 bit value in radr to val.|
 ### Flag operations  
 |Instruction with arguments|Function in pseudocode|
 |-|-|
@@ -114,7 +114,7 @@ When building a compiler or an interpreter for AMA it should obey the following:
 -Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
    for runtime environments.  
 -Take all numbers as hexadecimal.  
--Implement the [DATA STORAGE](#data-storage) as specified.
+-Implement the [DATA STORAGE](#data-storage) as specified.  
 ## Specification of file-external instructions  
 Here the [FILE-EXTERNAL COMMANDS](#external) are specified:  
 |Opcode|Instruction|Function|
