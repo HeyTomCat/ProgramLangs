@@ -23,33 +23,8 @@ opcode = {
   'ext': 0xf
 }
 
-exspected_args = [
-  (1, [':']),
-  (1, [':']),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  ()
-]
-
-def decode(instruction):
-  pass
-
-def interpret(keywords):
-  pass
-
 if __name__ == '__main__':
   if len(sys.argv) != 2:
     print("Invalid number of arguments!")
     sys.exit(1)
-  interpret(parse(open(sys.argv[1], "r").read()))
+  print(parse(open(sys.argv[1], "r").read()))
