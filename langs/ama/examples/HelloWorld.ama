@@ -1,15 +1,16 @@
-set :1 ;H
-set :2 ;e
-set :4 ;l
+set :1 !48;H
+set :2 !65;e
+set :4 !6c;l
 mov :4 :5 ;l
-set :6 ;o
-set :7 ;SPACE
-set :8 ;W
+set :6 !6f;o
+set :7 !20;SPACE
+set :8 !57;W
 mov :6 :9 ;o
-set :a ;r
+set :a !72;r
 mov :4 :b ;l
-set :c ;d
-set :d ;!
-set :e 0;NULL
+set :c !64;d
+set :d !21;!
+set :e !0 ;NULL
 lm [0] [3];Load OUT instruction
 ext [0] :1;Output
+;Exspected Output: Hello World!
