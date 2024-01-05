@@ -1,4 +1,4 @@
-# Specification for AMA v1.2  
+# Specification for AMA v1.3  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
@@ -129,7 +129,7 @@ Any opcode larger should be ignored.
 ## Temporary registers  
 This is an optional feature for AMA compilers and interpreters which makes  
 coding easier and makes the code look cleaner. With this you can, instead of a  
-register as :r with r being the register number, write an integer as [n] with  
+register as :r with r being the register number, write an integer as %n with  
 n being the integer. It should be implemented by writing before the instruction  
 a set instruction, setting one of the "temporary registers" (usually register 253,  
 254 or 255) to the integer. This has the same effect as using that number  
