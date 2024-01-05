@@ -105,7 +105,7 @@ it knows there was a corruption and should output an error.
 ## Specifications for compilers and interpreters  
 When building a compiler or an interpreter for AMA it should obey the following:  
 -In case your compiler or interpreter uses [TEMPORARY REGISTERS](#temporary-registers) it should  
-   also output an error and stop when register 253, 254 or 255 is being  
+   output an warning and stop when register 253, 254 or 255 is being  
    edited (for reason see [TEMPORARY REGISTERS](#temporary-registers)).  
 -When detecting a ; it should ignore the ; and the rest of the line, because  
    a ; represents the start of a comment.
