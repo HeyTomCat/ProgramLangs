@@ -1,1 +1,3 @@
-
+set :1 !0  ;UTF-32 char as int
+set :2 !0  ;Constant 0 needed for output termination and checking for end of loop
+setm [0] !3;Load OUT instruction
