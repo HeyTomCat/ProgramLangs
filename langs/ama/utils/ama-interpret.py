@@ -4,8 +4,7 @@ def error(msg):
   print(msg)
   sys.exit(1)
 
-def parse(program):
-  #removes comments and splits up into keywords
+def clean(program):
   return [instruction for instruction in [line.split(';')[0].split() for line in program.split('\n')] if instruction != []]
 
 def getOpcode(instruction):
@@ -30,7 +29,7 @@ def getOpcode(instruction):
     error('Instruction not found: ' + instruction)
   return res
 
-def interpret(keywords):
+def expand(keywords):
   expanded=[]
   for key in keywords:
     expanded_key=[]
@@ -44,7 +43,20 @@ def interpret(keywords):
     expanded.append(expanded_key)
   return expanded
 
+def toCode(key, i):
+  if i == 0:
+    return getOpcode(key)
+  if i != 0:
+    return int(key[1:], 16)
+
+def encode(keywords):
+  encoded = [[toCode(key, i) for i, key in enumerate(instruction)] for instruction in keywords]
+  return encoded
+
+def format(program):
+  return encode(expand(clean(program)))
+
 if __name__ == '__main__':
   if len(sys.argv) != 2:
     error("Invalid number of arguments!")
-  print(interpret(parse(open(sys.argv[1], "r").read())))
+  print(format(open(sys.argv[1], "r").read()))
