@@ -56,6 +56,9 @@ def encode(keywords):
 def format(program):
   return encode(expand(clean(program)))
 
+def interpret(formatted):
+  pass
+
 if __name__ == '__main__':
   if len(sys.argv) != 2:
     error("Invalid number of arguments!")
