@@ -56,10 +56,54 @@ def encode(keywords):
 def format(program):
   return encode(expand(clean(program)))
 
-def interpret(formatted):
+def none():
   pass
+
+stack = []
+register = [0 for i in range(256)]
+flag = False
+
+def setRegister(r, val):
+  register[r] = val
+  return r == 0
+
+def setRegisterC(r, val, flag):
+  if flag:
+    setRegister(r, val)
+    return r == 0
+
+def setFlag(new):
+  flag = new
+
+cmds = [
+(lambda args: stack.append(register[args[0]])),
+(lambda args: setRegister(args[0], stack.pop())),
+(lambda args: setRegister(args[2], register[args[0]] + register[args[1]])),
+(lambda args: setRegister(args[2], register[args[0]] - register[args[1]])),
+(lambda args: setRegister(args[2], register[args[0]] * register[args[1]])),
+(lambda args: error('LR not yet implemented!')),
+(lambda args: error('LM not yet implemented!')),
+(lambda args: setRegister(args[1], register[args[0]])),
+(lambda args: setRegister(args[0], args[1])),
+(lambda args: setRegisterC(args[1], register[args[0]], flag)),
+(lambda args: error('SETM not yet implemented!')),
+(lambda args: setFlag(not flag)),
+(lambda args: setFlag(register[args[0]] < register[args[1]])),
+(lambda args: setFlag(register[args[0]] > register[args[1]])),
+(lambda args: setFlag(register[args[0]] == register[args[1]])),
+(lambda args: error('EXT not yet implemented!'))
+]
+
+def interpret(formatted):
+  while register[0] < len(formatted):
+    pcSet=False
+    op = formatted[register[0]][0]
+    args = formatted[register[0]][1:]
+    cmds[op](args)
+    if not pcSet:
+      register[0] += 1
 
 if __name__ == '__main__':
   if len(sys.argv) != 2:
     error("Invalid number of arguments!")
-  print(format(open(sys.argv[1], "r").read()))
+  interpret(format(open(sys.argv[1], "r").read()))
