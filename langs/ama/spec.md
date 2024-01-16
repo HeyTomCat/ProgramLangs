@@ -1,3 +1,4 @@
+# ⚠️SPECIFICATION NOT YET COMPLETE⚠️
 # Specification for AMA v1.3  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
