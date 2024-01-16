@@ -1,5 +1,5 @@
 # ⚠️SPECIFICATION NOT YET COMPLETE⚠️
-# Specification for AMA v1.3  
+# Specification for AMA v1.4  
 ## Contents of this specification  
 -[Contents of this specification](#contents-of-this-specification)  
 -[General Information](#general-information)  
