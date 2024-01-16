@@ -19,21 +19,21 @@
 -[Corruption detection](#corruption-detection)  
 -[Specifications for compilers and interpreters](#specifications-for-compilers-and-interpreters)  
 -[Specification of file-external instructions](#specification-of-file-external-instructions)
--[Temporary registers](#temporary-registers)
+-[Temporary register](#temporary-register)
 ## General Information  
 The "advanced minimalistic assembly", in short AMA, operates on 32 bit registers  
 and 8 bit memory cells (see [DATA STORAGE](#data-storage)). This language will in most cases be  
-compiled to an intermediate byte code in the form of an .EEA ("executable encoded  
-assembly") file (see [INSTRUCTION ENCODING SPECIFICATION](#instruction-encoding-specification), [CORRUPTION DETECTION](#corruption-detection))  
+compiled to an intermediate byte code in the form of an .XPF ("executable program  
+file") file (see [INSTRUCTION ENCODING SPECIFICATION](#instruction-encoding-specification), [CORRUPTION DETECTION](#corruption-detection))  
 or be interpreted directly as an .AMA file. The intermediate byte code will  
 then be interpreted by a runtime environment.  
 ## Data Storage  
 ### Registers  
-This language uses 256 registers with register 0 being used as the program  
+This language uses 8 general purpose registers with register 0 being used as the program  
 counter holding the index of the current instruction (see  
-[SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters)).  
-Each of these registers contain 32 bits in the form of 32 bit unsigned integers.  
-By standard are all values 0.  
+[SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters))  
+and registers 15 being used as the temporary register (see [TEMPORARY REGISTER](#temporary-register)).  
+Each of these registers contain 32 bit unsigned integers. These values start at 0.  
 ### Memory  
 This language uses a memory with 32 bit addresses. Each memory cell contains  
 8 bits. By standard are all values 0. When the address is higher than the  
@@ -127,7 +127,7 @@ Here the [FILE-EXTERNAL COMMANDS](#external) are specified:
 |4|in|Takes UTF-32 input into registers from argument register to next 0-valued register. Further input ignored.|
 
 Any opcode larger should be ignored.  
-## Temporary registers  
+## Temporary register  
 This is an optional feature for AMA compilers and interpreters which makes  
 coding easier and makes the code look cleaner. With this you can, instead of a  
 register as :r with r being the register number, write an integer as %n with  
