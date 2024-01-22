@@ -32,18 +32,20 @@ then be interpreted by a runtime environment.
 This language uses 8 general purpose registers with register 0 being used as the program  
 counter holding the index of the current instruction (see  
 [SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters))  
-and registers 15 being used as the temporary register (see [TEMPORARY REGISTER](#temporary-register)).  
-Each of these registers contain 32 bit unsigned integers. These values start at 0.  
+and register 7 being used as the temporary register (see [TEMPORARY REGISTER](#temporary-register)).  
+Each of these registers contain 32 bit. These values are initialized as 0.  
 ### Memory  
 This language uses a memory with 32 bit addresses. Each memory cell contains  
-8 bits. By standard are all values 0. When the address is higher than the  
-unsigned 32 bit integer limit it loops around to 0.  
+8 bits. All values are initialized as 0.  
 ### Flag  
-The flag is a boolean value, which can be set by the [FLAG OPERATIONS](#flag-operations).  
-By standard false.  
+The flag is a boolean value, which can be modified by the [FLAG OPERATIONS](#flag-operations).  
+Initialized as false.  
 ### Stack  
-The stack is a stack of 32 bit unsigned integers which can be changed by the  
-[STACK OPERATIONS](#stack-operations). By standard empty.  
+The stack is a stack of 32 bit values, which can be used with the  
+[STACK OPERATIONS](#stack-operations). Initialized as empty.  
+### I/O Streams
+The I/O Stream are queues used for input/output handling (see [I/O STREAM SPECIFICATIONS](#i).  
+
 ## Instruction set specification  
 ### Stack operations  
 |Instruction with arguments|Function|
@@ -135,3 +137,4 @@ n being the integer. It should be implemented by writing before the instruction
 a set instruction, setting one of the "temporary registers" (usually register 253,  
 254 or 255) to the integer. This has the same effect as using that number  
 directly, just the compiler or interpreter doesn't need to change the instructions.  
+# I/O Stream specificatons
