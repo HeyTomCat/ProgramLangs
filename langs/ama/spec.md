@@ -15,7 +15,7 @@ counter holding the index of the current instruction (see [SPECIFICATIONS FOR CO
 These values are initialized as 0.  
 ### Memory  
 This language uses a memory with 32 bit addresses. Each memory cell contains  
-8 bits. All values are initialized as 0.  
+8 bits. Memory can't be used before being allocated. All values are initialized as 0.  
 ### Flag  
 The flag is a boolean value, which can be modified by the [FLAG OPERATIONS](#flag-operations).  
 Initialized as false.  
@@ -34,7 +34,7 @@ These can be used with the [I/O STREAM INSTRUCTIONS](#io-stream-instructions).
 ### Arithmetic/Logic  
 |Instruction with arguments|Function|
 |-|-|
-|ALI $OP $r1 $r2 $r3|Applies the $OP [ARITHMETIC/LOGIC INSTRUCTION](#arithmeticlogic-instruction) to r1 and r2. Result is put into r3.|
+|ALI $OP $r1 $r2 $r3|Applies the $OP [ARITHMETIC/LOGIC INSTRUCTION](#arithmeticlogic-instructions) to r1 and r2. Result is put into r3.|
 ### I/O stream instructions
 |Instruction with arguments|Function|
 |-|-|
@@ -62,27 +62,22 @@ These can be used with the [I/O STREAM INSTRUCTIONS](#io-stream-instructions).
 ### Extended  
 |Instruction with arguments|Function|
 |-|-|
-|UXIS #OPC $r1|Executes extended instruction with the opcode given by OPC with the value in r1 as the argument.|
+|UXIS #OPC $r1|Executes [EXTENDED INSTRUCTION](#specification-of-extended-instructions) with the opcode given by OPC with the value in r1 as the argument.|
 ## Instruction encoding specification  
-|Opcode in hexadecimal|Instruction with arguments|Bit usage|Encoded Size|
+|Opcode in hexadecimal|Instruction|Bit usage|Encoded Size|
 |-|-|-|-|
 
 For more information on instructions see [INSTRUCTION SET SPECIFICATION](#instruction-set-specification).  
 To understand how redundant bits are used see [CORRUPTION DETECTION](#corruption-detection).  
 ## Corruption detection  
   
-## Specifications for compilers and interpreters  
-When building a compiler or an interpreter for AMA it should obey the following:  
--In case your compiler or interpreter uses [TEMPORARY REGISTERS](#temporary-registers) it should  
-   output an warning and stop when register 253, 254 or 255 is being  
-   edited (for reason see [TEMPORARY REGISTERS](#temporary-registers)).  
+## Specifications for compilers, interpreters and runtimes  
+When building a compiler, an interpreter or a runtime for AMA it should obey the following rules:    
 -When detecting a ; it should ignore the ; and the rest of the line, because  
-   a ; represents the start of a comment.
--For compilers and runtime environments the specified [CORRUPTION DETECTION](#corruption-detection)  
-   should be implemented.  
--Have the specified [FILE-EXTERNAL INSTRUCTUIONS](#specification-of-file-external-instructions) implemented. Also applys  
-   for runtime environments.  
--Take all numbers as hexadecimal.  
+   a ; represents the start of a comment. (not important for runtimes)
+-The specified [CORRUPTION DETECTION](#corruption-detection) should be implemented. (not important for interpreters)  
+-Have the specified [EXTENDED INSTRUCTUIONS](#specification-of-extended-instructions) implemented.  
+-Take all numbers as hexadecimal. (not important for runtimes)  
 -Implement the [DATA STORAGE](#data-storage) as specified.  
 ## Specification of extended instructions  
 Here the [EXTENDED INSTRUCTIONS](#extended) are specified:  
@@ -94,3 +89,14 @@ Here the [EXTENDED INSTRUCTIONS](#extended) are specified:
 |3|GETM|Allocates the argument * 4 bytes in RAM.|
 
 Any opcode larger should be ignored.  
+## Arithmetic/Logic instructions  
+|Opcode|Instruction|Function|
+|-|-|-|
+|0|OR|Bitwise or|
+|1|AND|Bitwise and|
+|2|XOR|Bitwise xor|
+|3|NOR|Bitwise nor|
+|4|NAND|Bitwise nand|
+|5|XNOR|Bitwise xnor|
+|6|ADD|Addition|
+|7|SUB|Subtraction|
