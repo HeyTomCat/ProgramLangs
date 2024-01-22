@@ -1,25 +1,6 @@
 # ⚠️SPECIFICATION NOT YET COMPLETE⚠️
 # Specification for AMA v1.4  
 ## Contents of this specification  
--[Contents of this specification](#contents-of-this-specification)  
--[General Information](#general-information)  
--[Data Storage](#data-storage)  
-   -[Registers](#registers)  
-   -[Memory](#memory)  
-   -[Flag](#flag)  
-   -[Stack](#stack)  
--[Instruction set specification](#instruction-set-specification)  
-   -[Stack operations](#stack-operations)  
-   -[Arithmetic](#arithmetic)  
-   -[Data instructions](#data-instructions)  
-   -[Flag operations](#flag-operations)  
-   -[Branching](#branching)  
-   -[External](#external)  
--[Instruction encoding specification](#instruction-encoding-specification)  
--[Corruption detection](#corruption-detection)  
--[Specifications for compilers and interpreters](#specifications-for-compilers-and-interpreters)  
--[Specification of file-external instructions](#specification-of-file-external-instructions)
--[Temporary register](#temporary-register)
 ## General Information  
 The "advanced minimalistic assembly", in short AMA, operates on 32 bit registers  
 and 8 bit memory cells (see [DATA STORAGE](#data-storage)). This language will in most cases be  
@@ -29,11 +10,9 @@ or be interpreted directly as an .AMA file. The intermediate byte code will
 then be interpreted by a runtime environment.  
 ## Data Storage  
 ### Registers  
-This language uses 8 general purpose registers with register 0 being used as the program  
-counter holding the index of the current instruction (see  
-[SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters))  
-and register 7 being used as the temporary register (see [TEMPORARY REGISTER](#temporary-register)).  
-Each of these registers contain 32 bit. These values are initialized as 0.  
+This language uses 8 general purpose 32 bit registers with register 0 being used as the program  
+counter holding the index of the current instruction (see [SPECIFICATIONS FOR COMPILERS AND INTERPRETERS](#specifications-for-compilers-and-interpreters)).  
+These values are initialized as 0.  
 ### Memory  
 This language uses a memory with 32 bit addresses. Each memory cell contains  
 8 bits. All values are initialized as 0.  
@@ -43,68 +22,55 @@ Initialized as false.
 ### Stack  
 The stack is a stack of 32 bit values, which can be used with the  
 [STACK OPERATIONS](#stack-operations). Initialized as empty.  
-### I/O Streams
-The I/O Stream are queues used for input/output handling (see [I/O STREAM SPECIFICATIONS](#i).  
-
+### I/O streams
+The I/O streams are queues used for input/output handling (see [I/O STREAM SPECIFICATIONS](#io-stream-specifications).  
+These can be used with the [I/O STREAM INSTRUCTIONS](#io-stream-instructions).  
 ## Instruction set specification  
 ### Stack operations  
 |Instruction with arguments|Function|
 |-|-|
-|push :r|Push value in register r onto stack.|
-|pop :r|Pop value of stack into register r.|
-### Arithmetic  
-|Instruction with arguments|Function in pseudocode|
-|-|-|
-|add :r1 :r2 :r3|r3 = r1 + r2|
-|sub :r1 :r2 :r3|r3 = r1 - r2|
-|mult :r1 :r2 :r3|r3 = r1 * r2|
-### Data instructions  
+|PUSH $r1|Push value in register r1 onto stack.|
+|POP $r1|Pop value of stack into register r1.|
+### Arithmetic/Logic  
 |Instruction with arguments|Function|
 |-|-|
-|lr :r :radr|Load the register r with the value in the 4 memory cells ending with the address given by the value in radr.|
-|lm :radr :r|Load the 4 memory cells ending at the address given by the value in radr with the value in r.|
-|mov :r1 :r2|In pseudocode: r2 = r1|
-|set :r !val|With val an 32 bit unsigned integer, in pseudocode: r = val|
-|cmov :r1 :r2|If flag is set to true copy value in r1 into r2.|
-|setm :radr $val|Set the 4 memory cells ending at the address given by the 8 bit value in radr to val.|
+|ALI $OP $r1 $r2 $r3|Applies the $OP [ARITHMETIC/LOGIC INSTRUCTION](#arithmeticlogic-instruction) to r1 and r2. Result is put into r3.|
+### I/O stream instructions
+|Instruction with arguments|Function|
+|-|-|
+|HIOS $STREAM $r1|Depending on, if STREAM is an input or an output stream, either push value in r1 into STREAM or pop value of STREAM into r1.|
+|POS $STREAM|Proccess output STREAM by emptying it and outputting it.|
+### Memory instructions  
+|Instruction with arguments|Function|
+|-|-|
+|LOD $r1 $r2|Load register r1 with the value combining the 4 memory cells beginning at the adress given by the value in r2.|
+|STO $r1 $r2|Store into the 4 memory cells beginning at the address given by the value in r2 with the value in r1.|
+|STI $r1 #val|Set the 4 memory cells beginning at the address given by the value in r1 to val.|
+### Register instructions
+|Instruction with arguments|Function|
+|-|-|
+|LDI $r1 !val|Load val into r1.|
+|MOV $r1 $r2|Load value in r1 into r2.|
+|CMOV $r1 $r2|Load value in r1 into r2 only if the flag is true.|
 ### Flag operations  
-|Instruction with arguments|Function in pseudocode|
-|-|-|
-|nf|flag = not flag|
-|sfl :r1 :r2|flag = r1 < r2|
-|sfg :r1 :r2|flag = r1 > r2|
-|sfe :r1 :r2|flag = r1 == r2|
-### External  
 |Instruction with arguments|Function|
 |-|-|
-|ext :rop :rarg|Executes the file-external instruction with the opcode given by the value in memory with the address given by the value in rop, argument register given by the value in rarg (see [SPECIFICATION OF FILE-EXTERNAL INSTRUCTIONS](#specification-of-file-external-instructions)).|
+|NF|Negates flag.|
+|SFL $r1 $r2|Sets flag to true, if value in r1 is less than the value in r2, else sets flag to false.|
+|SFG $r1 $r2|Sets flag to true, if value in r1 is greater than the value in r2, else sets flag to false.|
+|SFE $r1 $r2|Sets flag to true, if value in r1 is equal to the value in r2, else sets flag to false.|
+### Extended  
+|Instruction with arguments|Function|
+|-|-|
+|UXIS #OPC $r1|Executes extended instruction with the opcode given by OPC with the value in r1 as the argument.|
 ## Instruction encoding specification  
 |Opcode in hexadecimal|Instruction with arguments|Bit usage|Encoded Size|
 |-|-|-|-|
-|0|push :r|4b redundant, 4b opcode, 8b r|2B|
-|1|pop :r|4b redundant, 4b opcode,  8b r|2B|
-|2|add :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3|4B|
-|3|sub :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3|4B|
-|4|mult :r1 :r2 :r3|4b redundant, 4b opcode, 8b r1, 8b r2, 8b r3|4B|
-|5|lr :r :radr|4b redundant, 4b opcode, 8b r, 8b radr|3B|
-|6|lm :radr :r|4b redundant, 4b opcode, 8b r, 8b radr|3B|
-|7|mov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|8|set :r !val|4b redundant, 4b opcode, 8b r, 32b val|6B|
-|9|cmov :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|a|setm :radr !val|4b redundant, 4b opcode, 8b radr, 32b val|6B|
-|b|nf|4b redundant, 4b opcode|1B|
-|c|sfl :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|d|sfg :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|e|sfe :r1 :r2|4b redundant, 4b opcode, 8b r1, 8b r2|3B|
-|f|ext :rop :rarg|4b redundant, 4b opcode, 8b rop, 8b rarg|3B|  
 
 For more information on instructions see [INSTRUCTION SET SPECIFICATION](#instruction-set-specification).  
 To understand how redundant bits are used see [CORRUPTION DETECTION](#corruption-detection).  
 ## Corruption detection  
-When encoded, there are 4 redundant bits per instruction that are used  
-for corruption detection. Those bits are usually all set to 0 and if  
-the runtime environment finds, that at least 1 of those bits isn't 0  
-it knows there was a corruption and should output an error.  
+  
 ## Specifications for compilers and interpreters  
 When building a compiler or an interpreter for AMA it should obey the following:  
 -In case your compiler or interpreter uses [TEMPORARY REGISTERS](#temporary-registers) it should  
@@ -118,23 +84,13 @@ When building a compiler or an interpreter for AMA it should obey the following:
    for runtime environments.  
 -Take all numbers as hexadecimal.  
 -Implement the [DATA STORAGE](#data-storage) as specified.  
-## Specification of file-external instructions  
-Here the [FILE-EXTERNAL COMMANDS](#external) are specified:  
+## Specification of extended instructions  
+Here the [EXTENDED INSTRUCTIONS](#extended) are specified:  
 |Opcode|Instruction|Function|
 |-|-|-|
-|0|halt|Exits program with exit code given by the value in the argument register.|
-|1|noop|Does nothing.|
-|2|sleep|Waits an amount of milliseconds given by the value in the argument register.|
-|3|out|Outputs all registers from argument register to next 0-valued register as UTF-32.|
-|4|in|Takes UTF-32 input into registers from argument register to next 0-valued register. Further input ignored.|
+|0|EXIT|Exits program with exit code given by the argument.|
+|1|NOP|Does nothing.|
+|2|WAIT|Waits an amount of milliseconds given by the argument.|
+|3|GETM|Allocates the argument * 4 bytes in RAM.|
 
 Any opcode larger should be ignored.  
-## Temporary register  
-This is an optional feature for AMA compilers and interpreters which makes  
-coding easier and makes the code look cleaner. With this you can, instead of a  
-register as :r with r being the register number, write an integer as %n with  
-n being the integer. It should be implemented by writing before the instruction  
-a set instruction, setting one of the "temporary registers" (usually register 253,  
-254 or 255) to the integer. This has the same effect as using that number  
-directly, just the compiler or interpreter doesn't need to change the instructions.  
-# I/O Stream specificatons
