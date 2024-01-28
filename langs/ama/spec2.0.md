@@ -7,3 +7,8 @@ The "advanced minimalistic assembly", or short AMA, is a programming language wi
 ### Registers
 This language operates on 4 registers, called R0, R1, R2 and R3, of 32 bits each, all initialized as 0. The register R0 holds the index of the current instruction and when written to leads to instruction jumps.  
 ### Memory
+This language uses a memory with 32 bit addresses, therefore 4294967296 memory cells, each containing 8 bit. All cells are initialized as 0. Memory can't be used unless allocated.  
+### Flag
+The flag is a 1 bit boolean value initialized as false.  
+### Stack
+The stack is a stack of 32 bit values.
