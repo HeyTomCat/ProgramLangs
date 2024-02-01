@@ -25,6 +25,8 @@ The I/O Streams are 8 different queues of 32 bit values.
 |5|dat3|General purpose data stream|
 |6|dat4|General purpose data stream|
 |7|dat5|General purpose data stream|
+
+When a queue is empty and used as input, it should always return 0.  
 ## Execution cycle
 AMA executes all instructions using a special execution cycle:  
 **1.** Load instruction from instruction memory with program counter (R0).  
