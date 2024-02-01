@@ -73,7 +73,7 @@ Here all 32 instructions, their opcodes in hexadecimal and their function are li
 |1f|exit $n|Exits with exit code $n.|
 ## Arithmetic/Logic operation
 |ID|OPERATION|FUNCTION|
-|-|-|
+|-|-|-|
 |0|add|Addition|
 |1|sub|Subtraction|
 |2|shiftl|Bit left shift|
