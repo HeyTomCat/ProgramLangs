@@ -40,7 +40,7 @@ Here all 32 instructions, their opcodes in hexadecimal and their function are li
 |00|nop|Does nothing.|
 |01|push r1|Pushes value in r1 onto stack.|
 |02|pop r1|Pops value of the stack into r1.|
-|03|ali #op r1 r2 r3|Applys #op arithmetic/logic instruction to r1 and r2. Result is put into r3.|
+|03|ali #op r1 r2 r3|Applys #op arithmetic/logic operation to r1 and r2. Result is put into r3.|
 |04|i #stream r1|Pops from i/o #stream into r1.|
 |05|o #stream r1|Pushes onto i/o #stream from r1.|
 |06|ld-ir !i r1|Loads !i into r1.|
@@ -67,5 +67,16 @@ Here all 32 instructions, their opcodes in hexadecimal and their function are li
 |1b|sfei r1 !i|Sets flag if r1 == !i. Else resets flag.|
 |1c|debug|Enter debug mode.|
 |1d|alloc !start !end|Allocates memory from memory address !start to memory adress !end.|
-|1e|sys #op $arg|Executes system instruction #op with argument #arg.|
-|1f|exit #n|Exits with exit code #n.|
+|1e|sys $op $arg|Executes system instruction $op with argument $arg.|
+|1f|exit $n|Exits with exit code $n.|
+## Arithmetic/Logic operation
+|ID|OPERATION|FUNCTION|
+|-|-|
+|0|add|Addition|
+|1|sub|Subtraction|
+|2|shiftl|Bit left shift|
+|3|shiftr|Bit right shift|
+|4|or|Bitwise or|
+|5|and|Bitwise and|
+|6|xor|Bitwise xor|
+|7|nand|Bitwise nand|
