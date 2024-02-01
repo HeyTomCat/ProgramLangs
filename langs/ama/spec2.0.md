@@ -37,34 +37,34 @@ AMA executes all instructions using a special execution cycle:
 Here all 32 instructions, their opcodes in hexadecimal and their function are listed. Registers are written as rN with N being a hexadecimal number, 3 bit integers as #N, 8 bit integers as $N and 32 bit integers as !N.  
 |OPCODE IN HEX|INSTRUCTION|FUNCTION|
 |-|-|-|
-|00|push r1|Pushes value in r1 onto stack.|
-|01|pop r1|Pops value of the stack into r1.|
-|02|ali #op r1 r2 r3|Applys #op arithmetic/logic instruction to r1 and r2. Result is put into r3.|
-|03|i #stream r1|Pops from i/o #stream into r1.|
-|04|o #stream r1|Pushes onto i/o #stream from r1.|
-|05|ld-ir !i r1|Loads !i into r1.|
-|06|ld-im $i r1|Loads $i into the memory cell with the address given by the value in r1.|
-|07|ld-rr r1 r2|Copys value in r1 into r2.|
-|08|ld-rm r1 r2|Copys value in r1 into the 4 memory cells beginning at the address given by the value in r2.|
-|09|ld-ra r1 !a|Copys value in r1 into the 4 memory cells beginning at the address !a.|
-|0a|ld-mr r1 r2|Copys value in the 4 memory cells beginning at the address given by the value in r1 into r2.|
-|0b|cld-ir !i r1|Loads !i into r1 if the flag is set.|
-|0c|cld-im $i r1|Loads $i into the memory cell with the address given by the value in r1 if flag is set.|
-|0d|cld-rr r1 r2|Copys value in r1 into r2 if flag.|
-|0e|cld-rm r1 r2|Copys value in r1 into the 4 memory cells beginning at the address given by the value in r2 if flag is set.||
-|0f|cld-mr r1 r2|Copys value in the 4 memory cells beginning at the address given by the value in r1 into r2 if flag is set.|
-|10|nf|Negates flag. If flag is set resets flag and if flag is reset sets.|
-|11|sfl r1 r2|Sets flag if r1 < r2. Else resets flag.|
-|12|sfe r1 r2|Sets flag if r1 == r2. Else resets flag.|
-|13|sf|Sets flag.|
-|14|rf|Resets flag.|
-|15|pushi !i|Pushes !i onto stack.|
-|16|alii #op r1 !i r2|Applys #op arithmetic/logic instruction to r1 and !i. Result is put into r2.|
-|17|subi !i r1 r2|Computes !i minus the value in r1. Result is put into r2.|
-|18|oi #stream !i|Pushes !i onto i/o #stream.|
-|19|sfli r1 !i|Sets flag if r1 < !i. Else resets flag.|
-|1a|sfei r1 !i|Sets flag if r1 == !i. Else resets flag.|
-|1b|nop|Does nothing.|
+|00|nop|Does nothing.|
+|01|push r1|Pushes value in r1 onto stack.|
+|02|pop r1|Pops value of the stack into r1.|
+|03|ali #op r1 r2 r3|Applys #op arithmetic/logic instruction to r1 and r2. Result is put into r3.|
+|04|i #stream r1|Pops from i/o #stream into r1.|
+|05|o #stream r1|Pushes onto i/o #stream from r1.|
+|06|ld-ir !i r1|Loads !i into r1.|
+|07|ld-im $i r1|Loads $i into the memory cell with the address given by the value in r1.|
+|08|ld-rr r1 r2|Copys value in r1 into r2.|
+|09|ld-rm r1 r2|Copys value in r1 into the 4 memory cells beginning at the address given by the value in r2.|
+|0a|ld-ra r1 !a|Copys value in r1 into the 4 memory cells beginning at the address !a.|
+|0b|ld-mr r1 r2|Copys value in the 4 memory cells beginning at the address given by the value in r1 into r2.|
+|0c|cld-ir !i r1|Loads !i into r1 if the flag is set.|
+|0d|cld-im $i r1|Loads $i into the memory cell with the address given by the value in r1 if flag is set.|
+|0e|cld-rr r1 r2|Copys value in r1 into r2 if flag.|
+|0f|cld-rm r1 r2|Copys value in r1 into the 4 memory cells beginning at the address given by the value in r2 if flag is set.||
+|10|cld-mr r1 r2|Copys value in the 4 memory cells beginning at the address given by the value in r1 into r2 if flag is set.|
+|11|nf|Negates flag. If flag is set resets flag and if flag is reset sets.|
+|12|sfl r1 r2|Sets flag if r1 < r2. Else resets flag.|
+|13|sfe r1 r2|Sets flag if r1 == r2. Else resets flag.|
+|14|sf|Sets flag.|
+|15|rf|Resets flag.|
+|16|pushi !i|Pushes !i onto stack.|
+|17|alii #op r1 !i r2|Applys #op arithmetic/logic instruction to r1 and !i. Result is put into r2.|
+|18|subi !i r1 r2|Computes !i minus the value in r1. Result is put into r2.|
+|19|oi #stream !i|Pushes !i onto i/o #stream.|
+|1a|sfli r1 !i|Sets flag if r1 < !i. Else resets flag.|
+|1b|sfei r1 !i|Sets flag if r1 == !i. Else resets flag.|
 |1c|debug|Enter debug mode.|
 |1d|alloc !start !end|Allocates memory from memory address !start to memory adress !end.|
 |1e|sys #op $arg|Executes system instruction #op with argument #arg.|
