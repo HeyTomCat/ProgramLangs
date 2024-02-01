@@ -16,7 +16,7 @@ The stack is a stack of 32 bit values initialized as empty.
 The I/O Streams are 8 different queues of 32 bit values.  
 |ID|NAME|FUNCTION|
 |-|-|-|
-|0|null|Discards when used as output, returns 0 when used as input|
+|0|null|Discards data when used as output, returns 0 when used as input|
 |1|syst|Interaction with system|
 |2|meta|Data stream containing the meta-data string. Equivalent to dat0.|
 |2|dat0|Data stream containing the meta-data string. Equivalent to meta.|
