@@ -71,7 +71,7 @@ Here all 32 instructions, their opcodes in hexadecimal and their function are li
 |1d|alloc !start !end|Allocates memory from memory address !start to memory adress !end.|
 |1e|sys $op $arg|Executes system instruction $op with argument $arg.|
 |1f|exit $n|Exits with exit code $n.|
-## Arithmetic/Logic operation
+## Arithmetic/Logic operations
 |ID|OPERATION|FUNCTION|
 |-|-|-|
 |0|add|Addition|
@@ -82,3 +82,10 @@ Here all 32 instructions, their opcodes in hexadecimal and their function are li
 |5|and|Bitwise and|
 |6|xor|Bitwise xor|
 |7|nand|Bitwise nand|
+## System instructions
+|ID|OPERATION|FUNCTION|
+|-|-|-|
+|0|in||
+|1|out||
+
+All system instruction calls with higher instruction id should be ignored.
