@@ -30,9 +30,11 @@ AMS has access to 4GB of disk space. It is divieded into 64K blocks of 64KB each
 |0000|RAM-Block|Reading from this block will result in the [RAM](#ram). Writing to it will write to the [RAM](#ram).|
 |0001|Disk access block|This is the block, with which programs are able to access the disk.|
 |0002|NUL-Block|Even though not enforced, this block should be kept free for the purpose of easy freeing of other blocks.|
-|0003|TMP-Block||
-|0004|CON-Block||
-|0005-FFFF|General purpose block||
+|0003|TMP-Block|This block should be mostly kept free for the purpose of saving important data from the disk access block, when other data is currently being read.|
+|0004|CON-Block|This block represents the contents of the console.|
+|0005-FFFF|General purpose block|General purpose blocks that can be used as general disk space.|
+
+
 
 ## Optional extensions for AMS
 ### Implicit value usage
