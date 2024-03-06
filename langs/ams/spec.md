@@ -34,7 +34,11 @@ AMS has access to 4GB of disk space. It is divieded into 64K blocks of 64KB each
 |0004|CON-Block|This block represents the contents of the console.|
 |0005-FFFF|General purpose block|General purpose blocks that can be used as general disk space.|
 
+***NOTICE:** The whole 4GB can't be used as disk space, since 5 * 64KB are required for other purposes.*
 
+## List of instructions
+AMS uses a total of 16 instructions with different purposes. These are listed in the table below.  
+|
 
 ## Optional extensions for AMS
 ### Implicit value usage
