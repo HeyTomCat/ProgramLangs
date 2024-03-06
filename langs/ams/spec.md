@@ -17,6 +17,17 @@ AMS uses a total of 8 registers, which are the only directly accessible type of 
 |A|r5|General purpose register A|
 |B|r6|General purpose register B|
 |I|r7|Register for [IMPLICIT VALUE USAGE](#implicit-value-usage)|
+### Memory
+AMS uses 64KB of RAM. In this RAM the working memory **and** the program memory is included.  
+  
+***NOTICE:** The working memory isn't the full 64 KB, since the program is included in the RAM too.*
+
+### Disk
+AMS has access to 4GB of disk space. It is divieded into 64K blocks of 64KB each. Some of these blocks have special purposes displayed in the table below.  
+
+|Block|Name|Purpose|
+|-|-|-|
+
 
 ## Optional extensions for AMS
 ### Implicit value usage
@@ -25,4 +36,4 @@ In the compilation process this corresponds to the instruction
 ```ldi I [HEX VALUE]```  
 being placed in front of the instruction, where the implicit value is used.  
   
-**NOTICE:** You can only use **one** implicit value per operation.
+***NOTICE:** You can only use **one** implicit value per operation.*
