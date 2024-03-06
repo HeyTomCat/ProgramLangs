@@ -36,9 +36,26 @@ AMS has access to 4GB of disk space. It is divieded into 64K blocks of 64KB each
 
 ***NOTICE:** The whole 4GB can't be used as disk space, since 5 * 64KB are required for other purposes.*
 
+## Type syntax
+The syntax for the different data types in AMS is listed in the table below.  
+
+|Syntax|Type|
+|-|-|
+|`r[DIGIT]` / [See register names](#registers)|[Register](#registers)|
+|`$[HEX DIGIT][HEX DIGIT]`|8-bit unsigned integer|
+|`%[HEX DIGIT][HEX DIGIT]`|[IMPLICIT VALUE](#implicit-value-usage) (Optional)|
+
 ## List of instructions
-AMS uses a total of 16 instructions with different purposes. These are listed in the table below.  
-|
+AMS uses a total of 16 instructions with different purposes. These are listed in the tables below.  
+
+
+|OP Code|Instruction|Example|Function|Function in example|
+|-|-|-|-|-|
+|0|NOP|`nop`|Does nothing|Does nothing|
+|1|HLT|`hlt $00`|Halts program with given exit code|Halts program with exit code `00`|
+|2|LDI|`ldi r0 $00`|Loads register with given value|Loads value `00` into register `r0`|
+|3|MOV|`mov r0 r1`|Copy value in first register into second register|Copys value in r0 into r1|
+
 
 ## Optional extensions for AMS
 ### Implicit value usage
