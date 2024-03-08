@@ -2,12 +2,15 @@ use std::env;
 use std::process;
 use std::string::String;
 use std::fs;
+use std::path;
+use std::str;
 
 fn usage() {
+    //Print usage infos
     println!("");
     println!("Usage of AMS tool:");  
     println!("");
-    println!("ams -h                        |  Show these informations");
+    println!("ams -h                        |  Show usage infos");
     println!("ams -s  {{AMS program file}}    |  Simulate the given AMS program");
     println!("ams -r  {{AMS byte code file}}  |  Execute the given AMS byte code");
     println!("ams -cb {{AMS program file}}    |  Compile the given AMS program to AMS byte code");
@@ -15,8 +18,9 @@ fn usage() {
     println!("ams -ca {{AMS program file}}    |  Compile the given AMS program to x86_64 assembly");
 }
 
-fn exit(code: i32) {
-    process::exit(code);
+fn exit(code: u8) {
+    //Halt program
+    process::exit(code.into());
 }
 
 fn main() {
@@ -62,8 +66,6 @@ fn main() {
         exit(1);
     }
 
-
-
     
 
     //Check if subcommand is "-h"
@@ -76,15 +78,22 @@ fn main() {
     if !subcmds_rf.contains(&subcmd) {
         println!("Fatal exception: Unable to resolve subcommand:");
         println!("{}", subcmd);
+        exit(1);
+    }
+
+    //Check if path is valid
+    if !path::Path::new(&args[0]).exists() {
+        println!("An error occured: Couldn't find file:");
+        println!("{}", &args[0]);
+        exit(1);
     }
 
     //Read file
-    let prog: String = fs::read_to_string(&args[0]).expect("~");
+    let prog = fs::read_to_string(&args[0]).expect("MAIN - L91 - Couldn't read file!");
 
-    //Check for error while reading file
-    if prog == String::from("~") {
-        println!("An Error Occured: Could not read file:");
-        println!("{}", &args[0]);
+    //Check if ascii
+    if !str::is_ascii(&prog) {
+        println!("An error occured: Detected non-ascii characters in program!");
         exit(1);
     }
 
