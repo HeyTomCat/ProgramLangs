@@ -10,6 +10,7 @@ fn usage() {
     println!("");
     println!("Usage of AMS tool:");  
     println!("");
+    println!("");
     println!("ams -h                        |  Show usage infos");
     println!("ams -s  {{AMS program file}}    |  Simulate the given AMS program");
     println!("ams -r  {{AMS byte code file}}  |  Execute the given AMS byte code");
@@ -19,7 +20,7 @@ fn usage() {
 }
 
 fn exit(code: u8) {
-    //Halt program
+    //Halt process
     process::exit(code.into());
 }
 
@@ -30,6 +31,7 @@ fn main() {
 
     //List valid subcommands
     let subcmds: Vec<String> = vec![
+        String::from("-v"),
         String::from("-h"), 
         String::from("-s"), 
         String::from("-r"), 
@@ -38,6 +40,7 @@ fn main() {
         String::from("-ca")];
     //Subcommands, that require a file
     let mut subcmds_rf = subcmds.clone();
+    subcmds_rf.remove(0);
     subcmds_rf.remove(0);
 
     //Check if subcommand exists
@@ -67,9 +70,15 @@ fn main() {
     }
 
     
+    //Check if subcommand is "-v"
+    if subcmd == subcmds[0] {
+        println!("AMS v2.0u0");
+        exit(0);
+    }
+
 
     //Check if subcommand is "-h"
-    if subcmd == subcmds[0] {
+    if subcmd == subcmds[1] {
         usage();
         exit(0);
     }
