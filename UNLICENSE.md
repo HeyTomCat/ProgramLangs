@@ -26,6 +26,5 @@ For more information, please refer to <https://unlicense.org>
 
 In addition, even though not required it would be greatly appreciated to  
 use this exact license with only minor modifications in your repository,  
-if it is based on or uses contents of this repository. Also it would be  
-greatly appreciated, if in any way you use these contents, there  
-is at least some mention of this repository.  
+if it is based on or uses contents of this repository and if in any way  
+these contents are used, this repository is mentioned in some way.  
