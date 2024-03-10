@@ -96,7 +96,7 @@ The access context is 16 bit specifier for the [Memory / Disk instructions](#mem
 ### Implicit value usage
 When an operation which requires a register is present, the register can be replaced with an 8-bit integer written in hexadecimal, with the prefix `%`. This just corresponds to the 8-bit integer being used, instead of the value in the register.  
 In the compilation process this corresponds to the instruction  
-`ldi I [HEX VALUE]`  
+`ldi I $[HEX VALUE]`  
 being placed in front of the instruction, where the implicit value is used.  
   
 ***NOTICE:** You can only use **one** implicit value per operation.*
