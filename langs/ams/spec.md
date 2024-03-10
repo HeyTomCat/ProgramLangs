@@ -1,5 +1,4 @@
-# ⚠️SPECIFICATION NOT YET COMPLETE⚠️
-# Specification for AMS 2.0
+# Specification for AMS 1.4 u1
 ## Contents of this specification
 ## Introduction
 AMS, which is short for "advanced minimalistic assembly", is an 8-bit register-based programming language with an assembly-inspired syntax.  
@@ -30,12 +29,12 @@ AMS has access to 4GB of disk space. It is divieded into 64K blocks of 64KB each
 
 |Block (Hexadecimal)|Name|Purpose|
 |-|-|-|
-|0000|RAM-Block|Reading from this block will result in the [RAM](#ram). Writing to it will write to the [RAM](#ram).|
-|0001|Disk access block|This is the block, with which programs are able to access the disk.|
-|0002|NUL-Block|Even though not enforced, this block should be kept free for the purpose of easy freeing of other blocks.|
-|0003|TMP-Block|This block should be mostly kept free for the purpose of saving important data from the disk access block, when other data is currently being read.|
-|0004|CON-Block|This block represents the contents of the console.|
-|0005-FFFF|General purpose block|General purpose blocks that can be used as general disk space.|
+|0000|RAM|Reading from this block will result in the [RAM](#ram). Writing to it will write to the [RAM](#ram).|
+|0001|NUL|Even though not enforced, this block should be kept free for the purpose of easy freeing of other blocks.|
+|0002|TMP|This block should be mostly kept free for the purpose of saving important data from the disk access block, when other data is currently being read.|
+|0003|CON|This block represents the contents of the console.|
+|0004|SYS|Block reserved for system code|
+|0005-FFFF|General purpose blocks|General purpose blocks that can be used as general disk space.|
 
 ***NOTICE:** The whole 4GB can't be used as disk space, since 5 * 64KB are required for other purposes.*
 
@@ -47,9 +46,13 @@ The syntax for the different data types in AMS is listed in the table below.
 |`r[DIGIT]` / [See register names](#registers)|[Register](#registers)|
 |`$[HEX DIGIT][HEX DIGIT]`|8-bit unsigned integer|
 |`%[HEX DIGIT][HEX DIGIT]`|[IMPLICIT VALUE](#implicit-value-usage) (Optional)|
+|`{SOMETHING}`|Explained in close proximity to usage|
 
 ## List of instructions
 AMS uses a total of 16 instructions with different purposes. These are listed in the tables below.  
+
+## Access context
+The access context is 16 bit specifier for the [Memory / Disk instructions](#memory--disk-instructions) from where to read or where to write to. These map directly to the addresses of the [Disk blocks](#disk), including special blocks like [RAM](#disk).  
 
 ### NOP & HLT
 |OP Code (hex)|Instruction|Example|Function in example|
@@ -63,23 +66,31 @@ AMS uses a total of 16 instructions with different purposes. These are listed in
 |2|LDI|`ldi r0 $00`Loads value `00` into register `r0`|
 |3|MOV|`mov r0 r1`|Copys value in r0 into r1|
 
-### Memory instructions
+### Memory / Disk instructions
 |OP Code (hex)|Instruction|Example|Function in example|
 |-|-|-|-|
-|4|STR|`str r0`|Stores value in register `r0` into the memory loction given by the [L and H registers](#registers)|
-|5|LDR|`ldr r0`|Loads value in the memory location given by the [L and H registers](#registers) into the register `r0`|
+|4|STR|`str r0`|Stores value in register `r0` into the [access context](#access-context) loction given by the [L and H registers](#registers)|
+|5|LDR|`ldr r0`|Loads value in the [access context](#access-context) location given by the [L and H registers](#registers) into the register `r0`|
 
 ### Arithmetic/Logic instructions
 |OP Code (hex)|Instruction|Example|Function in example|
 |-|-|-|-|
-|7|NOR|`nor r0 r1 r2`|Applies a bitwise nor operation to the values in r1 and r2, puts result into r0|
-|8|AND|`and r0 r1 r2`|Applies a bitwise and operation to the values in r1 and r2, puts result into r0|
-|9|XOR|`xor r0 r1 r2`|Applies a bitwise xor operation to the values in r1 and r2, puts result into r0|
-|A|SHL|`shl r0 r1 r2`|Aplies a bit-left-shift by the value in r2 to r1, puts result into r0|
-|B|ADD|`add r0 r1 r2`|Applies an addition to the values in r1 and r2, puts result into r0|
-|C|SUB|`sub r0 r1 r2`|Subtracts value in r2 from value in r1, puts result into r0|
+|7|NOR|`nor r1 r2 r0`|Applies a bitwise nor operation to the values in r1 and r2, puts result into r0|
+|8|AND|`and r1 r2 r0`|Applies a bitwise and operation to the values in r1 and r2, puts result into r0|
+|9|XOR|`xor r1 r2 r0`|Applies a bitwise xor operation to the values in r1 and r2, puts result into r0|
+|A|SHL|`shl r1 r2 r0`|Aplies a bit-left-shift by the value in r2 to r1, puts result into r0|
+|B|ADD|`add r1 r2 r0`|Applies an addition to the values in r1 and r2, puts result into r0|
+|C|SUB|`sub r1 r2 r0`|Subtracts value in r2 from value in r1, puts result into r0|
 
-
+### Jump instructions
+|OP Code (hex)|Instruction|Example|Function in example|
+|-|-|-|-|
+|D|JMP|`jmp`|Jumps in program execution to the memory location given by the [L and H registers](#registers)|
+|E|JFS|`jfs {FLAG}`|Jumps in program execution to the memory location given by the [L and H registers](#registers) if and only if the bit at the place given by the {FLAG} in the flags register is set|
+### Access context instructions
+|OP Code (hex)|Instruction|Example|Function in example|
+|-|-|-|-|
+|F|SAC|`sac`|Sets the [access context](#access-context) according to the [L and H registers](#registers)|
 
 ## Optional extensions for AMS
 ### Implicit value usage
