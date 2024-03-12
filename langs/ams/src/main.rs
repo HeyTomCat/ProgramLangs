@@ -10,7 +10,6 @@ fn usage() {
     println!("");
     println!("Usage of AMS tool:");  
     println!("");
-    println!("");
     println!("ams -h                        |  Show usage infos");
     println!("ams -s  {{AMS program file}}    |  Simulate the given AMS program");
     println!("ams -r  {{AMS byte code file}}  |  Execute the given AMS byte code");
