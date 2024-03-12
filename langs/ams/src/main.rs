@@ -23,6 +23,11 @@ fn exit(code: u8) {
     process::exit(code.into());
 }
 
+fn not_implemented(feature: &str) {
+    println!("Feature \"{}\" not yet implemented!", feature);
+    exit(1);
+}
+
 fn main() {
     // Get command line args
     let mut args: Vec<String> = env::args().collect::<Vec<String>>();
@@ -105,5 +110,28 @@ fn main() {
         exit(1);
     }
 
-    println!("{}", prog);
+    //Check command "-s"
+    if subcmd == subcmds_rf[0] {
+        not_implemented("-s");
+    }
+
+    //Check command "-r"
+    if subcmd == subcmds_rf[1] {
+        not_implemented("-r");
+    }
+
+    //Check command "-cb"
+    if subcmd == subcmds_rf[2] {
+        not_implemented("-cb");
+    }
+
+    //Check command "-cn"
+    if subcmd == subcmds_rf[3] {
+        not_implemented("-cn");
+    }
+
+    //Check command "-ca"
+    if subcmd == subcmds_rf[4] {
+        not_implemented("-ca");
+    }
 }
