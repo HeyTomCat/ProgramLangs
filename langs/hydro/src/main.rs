@@ -5,10 +5,12 @@ fn exit(code: i32) {
     process::exit(code);
 }
 
+
+
 fn usage() {
     // Outputs usage information
     println!("");
-    println!("Usage of the HYDRO-LANG-TOOL:");
+    println!("Usage of the HYDRO-TOOL:");
     println!("");
     println!("hydro  -help         Show list of commands");
     println!("hydro  -init [NAME]  Initializes a HYDRO project in current directory");
@@ -16,6 +18,15 @@ fn usage() {
     println!("hydro  -com          Compiles the project in the current directory");
     println!("");
 }
+
+
+
+fn handle_init(name: &str) {
+    println!("Error: Initializing is not yet implemented!");
+    exit(1);    
+}
+
+
 
 fn main() {
     // Get args
@@ -41,8 +52,18 @@ fn main() {
 
     // Check for "-init"
     if cmd == "-init" {
-        println!("Error: Initializing is not yet implemented!");
-        exit(1);
+        // Check for name
+        if args.len() == 0 {
+            println!("Error: The project should be given a name!");
+            exit(1);
+        }
+
+        // Get name
+        let name_string = args.remove(0);
+        let name = name_string.as_str();
+
+        // Handle initialization
+        handle_init(name);
     }
 
     // Check for "-sim"
