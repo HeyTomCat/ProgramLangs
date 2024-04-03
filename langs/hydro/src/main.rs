@@ -80,4 +80,6 @@ fn main() {
 
     // Handling of invalid cmd
     println!("Error: \"{}\" is not a valid command!", cmd);
+    usage();
+    exit(1);
 }
